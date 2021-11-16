@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name = "description" content = "Jeu vidéo Snake" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake</title>
+    <script src="./js/main.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
+</head>
+
+<body>
+    <div class="cadre_du_jeu">
+        <canvas id="screen" width=400 height=400></canvas>
+        <!-- on déclare le menu apres le canvas pour qu'il s'affiche au dessus -->
+        <div class="menu_jeu"> 
+            <nav id = "menu">
+                <h1 class = "element_menu"> Snake </h1>
+                <p class = "element_menu"> Choose level:</p>
+                <ul class = "element_menu">
+                    <li id="boutonEasy"> Easy </li>
+                    <li id="boutonMedium"> Medium </li>
+                    <li id="boutonHard"> Hard </li>
+                </ul>
+            </nav>
+            <div>
+                <h2 id = "gameOver">
+                    <a href="Snake.html"> Game Over! </a>
+                </h2>
+
+                <h2 id = "bestScore">
+                    <a href="Snake.html"> Best Score! </a>
+                </h2>
+
+            </div>
+
+            <!-- niveau -->
+            <span id = "lvl"> </span>
+
+            <!-- score et best score -->
+            <div class = "scores">
+                <span id = "score"></span>
+                <span id = "best_score"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- adds sur les côtés pour combler le vide -->
+    <div id = "addleft"></div>
+
+    <div id = "addright"></div>
+
+    <!-- fleches mobile -->
+    <div class = "arrows">
+        <div id = 'arrowup' class = "arrow-up"></div>
+        <div id = 'arrowright' class = "arrow-right"></div>
+        <div id = 'arrowdown' class = "arrow-down"></div>
+        <div id = 'arrowleft' class = "arrow-left"></div>
+    </div>
+    
+    <!-- version -->
+    <span id = "version">Version Beta (11/11/2021)</span>
+</body>
+
+</html>

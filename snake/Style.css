@@ -1,0 +1,327 @@
+
+* {
+    background-color: #86A058;
+    color: #20231C;
+    font-family:cursive;
+}
+
+#screen {
+    border: 0.1875rem solid black;
+    width: 25rem;
+    height: 25rem;
+}
+
+#addleft {
+    position:absolute;
+    width: 10%;
+    height: 80%;
+    background-color: #20231C;
+    margin: 0;
+    left: 3%;
+    top: 7%;
+}
+
+#addright {
+    position:absolute;
+    width: 10%;
+    height: 80%;
+    background-color: #20231C;
+    margin: 0;
+    left: 87%;
+    top: 7%;
+}
+
+.cadre_du_jeu{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    display: block;
+
+}
+
+.menu_jeu{
+    text-align: center;
+}
+
+.element_menu {
+    text-align: center;
+}
+
+.scores{
+    position: absolute;
+    font-weight: bold;
+    left: 0.1875rem;
+    font-size: 1rem;
+}
+
+#gameOver {
+    position: absolute;
+    display: none;
+    top: -8%;
+    left: 12%; 
+    right: 10%;
+    font-size: 6.25rem;
+    text-align: center;
+}
+
+/* message à la fin d'une partie */
+#bestScore {
+    position: absolute;
+    display: none;
+    top: 1%;
+    left: 5%; 
+    right: 10%;
+    font-size: 6.25rem;
+    text-align: center;
+}
+
+#lvl {
+    position:absolute;
+    top: -6%;
+    left: 35%;
+    font-weight: bold;
+}
+
+/* record à battre (nombre en bas à droite) */
+#best_score {
+    position:fixed;
+    left: 88%;
+}
+
+#version {
+    position: absolute;
+    top: 98%;
+    font-size: 0.625rem;
+}
+
+nav {
+    position: absolute;
+    display: block;
+    top: 5%;
+    left: 23%; 
+    padding: 0%;
+    margin: 0%;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 0.625rem;
+    font-size: 1.25rem;
+    border-radius: 5%;
+}
+
+nav ul li:hover {
+    color: #86A058;
+    cursor: pointer;
+    background-color: #20231C;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.arrows {
+    position:absolute;
+    display: none;
+    left:42%;
+    top: 65%;
+    z-index: 100;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    
+    border-right: 1.875rem solid transparent;
+    border-left: 1.875rem solid transparent;
+    
+    border-bottom: 2.3125rem solid #20231C;
+}
+
+.arrow-right {
+    width: 0;
+    height: 0;
+    
+    border-top: 1.875rem solid transparent;
+    border-bottom: 1.875rem solid transparent;
+    
+    border-left: 2.3125rem solid #20231C;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    
+    border-right: 1.875rem solid transparent;
+    border-left: 1.875rem solid transparent;
+    
+    border-top: 2.3125rem solid #20231C;
+}
+
+.arrow-left {
+    width: 0;
+    height: 0;
+    
+    border-top: 1.875rem solid transparent;
+    border-bottom: 1.875rem solid transparent;
+    
+    border-right: 2.3125rem solid #20231C;
+}
+
+#arrowup {
+    display: block;
+}
+
+#arrowright {
+    display: block;
+    position: relative;
+    left:100%;
+}
+
+#arrowdown {
+    display: block;
+}
+
+#arrowleft {
+    display: block;
+    position:absolute;
+    right:100%;
+    top: 28%;
+}
+
+@media screen and (max-height:550px) {
+    #addleft{
+        display: none;
+    }
+
+    #addright{
+        display: none;
+    }
+
+    #screen {
+        border: 0.125rem solid black;
+        width: 12.5rem;
+        height: 12.5rem;
+    }
+
+    .cadre_du_jeu {
+        left: 10%;
+        top: 60%;
+        transform: translate(0, -60%);
+    }
+
+    #gameOver {
+        font-size: 3.125rem;
+    }
+
+    #bestScore {
+        font-size: 3.125rem;
+    }
+
+    nav{
+        left: 15%;
+    }
+
+    h1 {
+        font-size: 3.125rem;
+    }
+
+    nav ul li {
+        padding: 0.375rem;
+        font-size: 0.75rem;
+        border-radius: 5%;
+        color: #86A058;
+        background-color: #20231C;
+    }
+
+    .scores{
+        font-size: 0.75rem;
+    }
+
+    #lvl {
+        top: -12%;
+    }
+
+    .arrows{
+        display: block;
+        top: 35%;
+        left: 75%
+    }
+
+    #version {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    #addleft{
+        display: none;
+    }
+
+    #addright{
+        display: none;
+    }
+
+    #screen {
+        border: 0.125rem solid black;
+        width: 15.625rem;
+        height: 15.625rem;
+    }
+
+    .cadre_du_jeu {
+        top: 10%;
+        transform: translate(-50%, 0);
+    }
+
+    #gameOver {
+        font-size: 4.0625rem;
+    }
+
+    #bestScore {
+        font-size: 4.0625rem;
+    }
+
+    nav{
+        left: 20%;
+    }
+
+    h1 {
+        font-size: 3.125rem;
+    }
+
+    nav ul li {
+        padding: 0.4375rem;
+        font-size: 0.875rem;
+        border-radius: 5%;
+        color: #86A058;
+        background-color: #20231C;
+    }
+
+    .scores{
+        font-size: 0.875rem;
+    }
+
+    #lvl {
+        top: -10%;
+    }
+
+    .arrows{
+        display: block;
+    }
+
+    #version {
+        display: none;
+    } 
+}
