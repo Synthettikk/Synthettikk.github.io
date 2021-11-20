@@ -1,7 +1,112 @@
 // snake
 
+////////////////////////////////////// FREQUENCE ECRAN ///////////////////////////////////////////
+
+let start = Date.now(); 
+let freqCalcul;
+let frequenceEcran;
+let nombreImages = 0; //nb d'images à partir du lancement de la page
+
+// calcul la frequence de rafraichissement du jeu en temps reel
+function freqScreen() {
+    if(nombreImages === 100) {
+        frequenceEcran = freqCalcul;
+        start = Date.now();
+        nombreImages = 0; // toutes les 100 images recalcul la frequence du jeu
+        requestAnimationFrame(freqScreen);
+    }
+
+    else {
+        const time = Date.now() - start;
+        freqCalcul = Math.round(nombreImages / (time / 1000)); // time est en millisecondes -> on le passe en secondes pour avoir des Herz
+        nombreImages += 1;
+        // console.log(frequenceEcran, freqCalcul, time, nombreImages);
+        requestAnimationFrame(freqScreen);
+    }
+}
+requestAnimationFrame(freqScreen);
+
+
+/////////////////////////////////////////// INTERFACE /////////////////////////////////////////////
+
+//canvas
 const graphCanvas = document.getElementById("screen");
 const contextscreen = graphCanvas.getContext("2d");
+
+//menu
+const bouton_easy = document.getElementById("boutonEasy");
+const bouton_medium = document.getElementById("boutonMedium");
+const bouton_hard = document.getElementById("boutonHard");
+const menu = document.getElementById("menu");
+const menugameOver = document.getElementById("gameOver");
+const level = document.getElementById("lvl");
+const scoregame = document.getElementById("score");
+const menubestScore = document.getElementById("bestScore");
+const recordlvl = document.getElementById("best_score");
+const compteRebours = document.getElementById("countdown");
+
+let niveau;
+
+// initialise les scores à 0
+if (localStorage.length === 0) {
+    localStorage.setItem('bestscoreEasy', 0);
+    localStorage.setItem('bestscoreMedium', 0);
+    localStorage.setItem('bestscoreHard', 0);
+}
+
+//compte à rebours début de partie
+let counter = 3;
+let intervalId;
+
+function tictac() {
+    counter -= 1;
+    if (counter > 0) {
+        compteRebours.innerHTML = counter;
+    }
+    else {
+        compteRebours.innerHTML = "GO!";
+    }
+
+    if (counter === -1) {
+        clearInterval(intervalId);
+        compteRebours.parentNode.removeChild(compteRebours);
+        game();
+    }
+}
+
+function countdown() {
+    compteRebours.innerHTML = counter;
+    intervalId = setInterval(tictac, 500);
+}
+
+function launcher() {
+    level.innerHTML = niveau;
+    menu.style.display = "none";
+    compteRebours.style.display = "block";
+    countdown();
+}
+
+//boutons pour choisir le niveau et lancer une partie 
+bouton_easy.addEventListener("click", () =>{
+    vitesse = 1/2;
+    niveau = "Level: Easy";
+    recordlvl.innerHTML = localStorage['bestscoreEasy'];
+    launcher();
+});
+
+bouton_medium.addEventListener("click", () =>{
+    vitesse = 1;
+    niveau = "Level: Medium";
+    recordlvl.innerHTML = localStorage['bestscoreMedium'];
+    launcher();
+});
+
+bouton_hard.addEventListener("click", () => {
+    vitesse = 5/3;
+    niveau = "Level: Hard";
+    recordlvl.innerHTML = localStorage['bestscoreHard'];
+    launcher();
+});
 
 // Flèches pour mobile
 const boutonArrowUp = document.getElementById("arrowup");
@@ -9,20 +114,14 @@ const boutonArrowRight = document.getElementById("arrowright");
 const boutonArrowDown = document.getElementById("arrowdown");
 const boutonArrowLeft = document.getElementById("arrowleft");
 
+
+///////////////////////////////////////////// MECANIQUE //////////////////////////////////////////
+
 function game() {
-    let timer = 0; // compte les images apres un evenement clavier
-    let nombreImages = 0;
+    const timeout = 7.5 * (frequenceEcran / 144) / vitesse; // temps entre 2 changements de direction; // 7.5 est empirique
+    let timer = 0; // compte les images apres un changement de direction
     let rayonSnake = 0; // le rayon des billes du snake ont un rayon = 0 à la premiere image
     let colorSnake = "#FFC264"
-    const start = Date.now();
-
-    function freqScreen() {
-        const time = Date.now() - start;
-        freq = Math.round(nombreImages / (time / 1000)); // time est en millisecondes -> on le passe en secondes pour avoir des Herz
-        console.log(freq, time);
-        return freq;
-    }
-
     const tailleCase = 10; // construit pour etre un multiple de 10
 
     function genere_Randcoord() {
@@ -33,7 +132,6 @@ function game() {
         x = x + tailleCase; // (bord) 
         y = y + tailleCase;
         return ({x, y});
-
     }
 
     function genere_Head(){ // génère des coord pour la tête du serpent, compris entre 100 et 300px
@@ -44,7 +142,7 @@ function game() {
     }
 
     let head = genere_Head(); 
-
+    
     function genere_Direction(head){ // direction de depart
         let direction;
         if (head.x < graphCanvas.width / 2 && head.y < graphCanvas.height / 2) { // si on est en haut à gauche
@@ -125,23 +223,13 @@ function game() {
         const coordPomme = genere_Randcoord();
         const pommex = coordPomme.x;
         const pommey = coordPomme.y;
-        snake.forEach( bodycell => {
-            if ((pommex === bodycell.x) && (pommey === bodycell.y)) { // ne doit pas pop sur le snake
-                return genere_Pomme();
-            }
-            // marche pas...
-            // else {
-            //     return ({pommex, pommey});
-            // }
-                //pas besoin de faire quoique ce soit, si les coord conviennent on les renvoie
-        });
+        // on pourrait faire en sorte que la pomme ne pop pas sur le snake
         return ({pommex, pommey});
     }
 
     let Pomme = genere_Pomme(); // on veut pas qu'il change à chaque image
 
     function snake_Update(){ // on fait se déplacer snake 
-        // const longueurSnake = snake.length;
         let dx;
         let dy;
         if (direction === "haut"){
@@ -160,37 +248,32 @@ function game() {
             dx = -1;
             dy = 0;
         }
-        
         // on fabrique les prochaines coordonnées de la tete:
         const xbefore = (coordToGrille(head.x, head.y).abscisse); // case sur laquelle était la tete image d'avant
         const ybefore = (coordToGrille(head.x, head.y).ordonnee);
-        const x0 = head.x + ((vitesse) * (144 / freqScreen())) * dx; // coord continue, x0 prend la nouvelle valeur de head.x
-        const y0 = head.y + ((vitesse) * (144 / freqScreen())) * dy;
+        const x0 = head.x + ((vitesse) * (144 / frequenceEcran)) * dx; // coord continue, x0 prend la nouvelle valeur de head.x
+        const y0 = head.y + ((vitesse) * (144 / frequenceEcran)) * dy;
         const x = (coordToGrille(x0, y0).abscisse); // coord discrète de head
         const y = (coordToGrille(x0, y0).ordonnee);
         head.x = x0;
         head.y = y0;
-        // let queuebefore = snake[longueurSnake - 1];
-        if ((xbefore != x) || (ybefore != y)) {
+        if ((xbefore != x) || (ybefore != y)) { // snake se deplace à partir du moment où on depasse x+0.5
             snake.unshift({x, y});
-            // const queuebefore = snake[longueurSnake];
             snake.pop();
         }
-        // return queuebefore;
-        // else on fait rien
     }
 
     function collisionPomme() {
         if (Pomme.pommex === snake[0].x && Pomme.pommey === snake[0].y) { // quand head touche pomme,
             Pomme = genere_Pomme(); // fait pop pomme ailleurs
             // fait grandir snake
-            const queuebefore = graphCanvas.height + tailleCase;
+            const queuebefore = graphCanvas.height + tailleCase; //on le fait pop à un endroit hors cadre
             snake.push({queuebefore, queuebefore});
         }
     }
 
     function score() {
-        return snake.length * 100 + Math.round(((nombreImages * 144) / freq) / 100) - 400;
+        return snake.length - 4; //nb de pommes ramassées
     }
 
     function coordToGrille(x, y) { 
@@ -215,7 +298,7 @@ function game() {
         });
     }
 
-    function rayonSnakeUp(){
+    function rayonSnakeUp(){ // peut etre amélioré
         if (rayonSnake === tailleCase / 2) {
             colorSnake = "white";
             return(rayonSnake);
@@ -276,75 +359,76 @@ function game() {
         }
     }
 
-    function loop(){
+    //////////////////////////////////////// EVENEMENTS ////////////////////////////////////
 
-        freqScreen();
+    // boutons mobile
+    boutonArrowUp.addEventListener('click', () => {
+        if (timer > 0) return; // si timer > 0: pas d'addEventListener
+        if (direction === "gauche" || direction === "droite") { // peut pas faire demi tour d'un coup
+            direction = "haut";
+            // timer pour eviter 2 actions sur la meme case
+            timer = timeout; 
+        }
+    });
 
-        contextscreen.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+    boutonArrowRight.addEventListener('click', () => {
+        if (timer > 0) return;
+        if (direction === "haut" || direction === "bas"){
+            direction = "droite";
+            timer = timeout;
+        }
+    });
 
-        boutonArrowUp.addEventListener('click', () => {
-            if (direction === "gauche" || direction === "droite") {
-                direction = "haut";
-                timer = 15 * (freqScreen() / 144);
-            }
-        });
+    boutonArrowDown.addEventListener('click', () => {
+        if (timer > 0) return;
+        if (direction === "gauche" || direction === "droite"){
+            direction = "bas";
+            timer = timeout;
+        }
+    });
 
-        boutonArrowRight.addEventListener('click', () => {
-            if (direction === "haut" || direction === "bas"){
-                direction = "droite";
-                timer = 15 * (freqScreen() / 144);
-            }
-        });
+    boutonArrowLeft.addEventListener('click', () => {
+        if (timer > 0) return;
+        if (direction === "haut" || direction === "bas"){ 
+            direction = "gauche";
+            timer = timeout; 
+        } 
+    });
 
-        boutonArrowDown.addEventListener('click', () => {
-            if (direction === "gauche" || direction === "droite"){
-                direction = "bas";
-                timer = 15 * (freqScreen() / 144);
-            }
-        });
-
-        boutonArrowLeft.addEventListener('click', () => {
+    // clavier
+    window.addEventListener('keydown', (event) => { 
+        if (timer > 0) return;
+        const name = event.key;
+        if ((name === "ArrowLeft" ) || (name === "q" )) {
             if (direction === "haut" || direction === "bas"){ // peut pas faire demi tour d'un coup
                 direction = "gauche";
-                timer = 15 * (freqScreen() / 144); // 15 est empirique
+                timer = timeout; // 15 est empirique
                 // timer pour eviter 2 actions sur la meme case
             } 
-        });
+        }
+        if ((name === "ArrowRight" ) || (name === "d" )) {
+            if (direction === "haut" || direction === "bas"){
+                direction = "droite";
+                timer = timeout;
+            }
+        }
+        if ((name === "ArrowUp" ) || (name === "z" )){
+            if (direction === "gauche" || direction === "droite") {
+                direction = "haut";
+                timer = timeout;
+            }
+        }
+        if ((name === "ArrowDown" ) || (name === "s" )) {
+            if (direction === "gauche" || direction === "droite"){
+                direction = "bas";
+                timer = timeout;
+            }
+        }
+    });
 
-        // clavier
-        
-        window.addEventListener('keydown', (event) => { 
-            const name = event.key;
-            if ((name === "ArrowLeft" && timer <= 0) || (name === "q" && timer <= 0)) {
-                if (direction === "haut" || direction === "bas"){ // peut pas faire demi tour d'un coup
-                    direction = "gauche";
-                    timer = 15 * (freqScreen() / 144); // 15 est empirique
-                    // timer pour eviter 2 actions sur la meme case
-                } 
-            }
-            if ((name === "ArrowRight" && timer <= 0) || (name === "d" && timer <= 0)) {
-                if (direction === "haut" || direction === "bas"){
-                    direction = "droite";
-                    timer = 15 * (freqScreen() / 144);
-                }
-            }
-            if ((name === "ArrowUp" && timer <= 0) || (name === "z" && timer <= 0)){
-                if (direction === "gauche" || direction === "droite") {
-                    direction = "haut";
-                    timer = 15 * (freqScreen() / 144);
-                }
-            }
-            if ((name === "ArrowDown" && timer <= 0) || (name === "s" && timer <= 0)) {
-                if (direction === "gauche" || direction === "droite"){
-                    direction = "bas";
-                    timer = 15 * (freqScreen() / 144);
-                }
-            }
-        }, false);
-
+    function loop(){
+        contextscreen.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
         timer -= 1;
-        nombreImages += 1;
-
         snake_Affichage();
         rayonSnakeUp();
         pomme_Affichage();
@@ -352,64 +436,8 @@ function game() {
         collisionPomme();
         gameOver();
         scoregame.innerHTML = score();
-
+        
         requestAnimationFrame(loop);
     }
-
     requestAnimationFrame(loop);
 }
-
-//////////////////////////////////////// MENU //////////////////////////////////////////////////
-
-const bouton_easy = document.getElementById("boutonEasy");
-const bouton_medium = document.getElementById("boutonMedium");
-const bouton_hard = document.getElementById("boutonHard");
-const menu = document.getElementById("menu");
-const menugameOver = document.getElementById("gameOver");
-const level = document.getElementById("lvl");
-const scoregame = document.getElementById("score");
-const menubestScore = document.getElementById("bestScore");
-const recordlvl = document.getElementById("best_score");
-
-
-let niveau;
-
-// initialise les scores à 0
-if (localStorage.length === 0) {
-    localStorage.setItem('bestscoreEasy', 0);
-    localStorage.setItem('bestscoreMedium', 0);
-    localStorage.setItem('bestscoreHard', 0);
-}
-
-bouton_easy.addEventListener("click", () =>{
-    vitesse = 1/2;
-    niveau = "Level: Easy";
-    level.innerHTML = niveau;
-    recordlvl.innerHTML = localStorage['bestscoreEasy'];
-    menu.style.display = "none";
-    game();
-});
-
-bouton_medium.addEventListener("click", () =>{
-    vitesse = 1;
-    niveau = "Level: Medium";
-    level.innerHTML = niveau;
-    recordlvl.innerHTML = localStorage['bestscoreMedium'];
-    menu.style.display = "none";
-    game();
-});
-
-bouton_hard.addEventListener("click", () => {
-    vitesse = 5/3;
-    niveau = "Level: Hard";
-    level.innerHTML = niveau;
-    recordlvl.innerHTML = localStorage['bestscoreHard'];
-    menu.style.display = "none";
-    game();
-});
-
-
-
-
-
-

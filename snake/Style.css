@@ -5,12 +5,6 @@
     font-family:cursive;
 }
 
-#screen {
-    border: 0.1875rem solid black;
-    width: 25rem;
-    height: 25rem;
-}
-
 #addleft {
     position:absolute;
     width: 10%;
@@ -36,58 +30,111 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -60%);
-    display: block;
-
+    display: flex;
 }
 
-.menu_jeu{
-    text-align: center;
-}
+    #screen {
+        border: 0.1875rem solid black;
+        width: 25rem;
+        height: 25rem;
+    }
 
-.element_menu {
-    text-align: center;
-}
+    .menu_jeu{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-.scores{
-    position: absolute;
-    font-weight: bold;
-    left: 0.1875rem;
-    font-size: 1rem;
-}
+        nav {
+            top: 5%;
+        }
 
-#gameOver {
-    position: absolute;
-    display: none;
-    top: -8%;
-    left: 12%; 
-    right: 10%;
-    font-size: 6.25rem;
-    text-align: center;
-}
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
 
-/* message à la fin d'une partie */
-#bestScore {
-    position: absolute;
-    display: none;
-    top: 1%;
-    left: 5%; 
-    right: 10%;
-    font-size: 6.25rem;
-    text-align: center;
-}
+        nav ul li {
+            display: inline-block;
+            margin: 1.3%;
+            padding: 0.625rem;
+            font-size: 1.25rem;
+            border-radius: 5%;
+        }
 
-#lvl {
-    position:absolute;
-    top: -6%;
-    left: 35%;
-    font-weight: bold;
-}
+        nav ul li:hover {
+            color: #86A058;
+            cursor: pointer;
+            background-color: #20231C;
+        }
 
-/* record à battre (nombre en bas à droite) */
-#best_score {
-    position:fixed;
-    left: 88%;
-}
+            h1 {
+                font-size: 6.5rem;
+                margin: 0;
+                margin-bottom: 15%;
+            }
+
+            .element_menu {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+            }
+
+        /* message à la fin d'une partie */
+        #gameOver {
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -85%);
+            font-size: 6.5rem;
+            text-align: center;
+        }
+
+        /* message à la fin d'une partie */
+        #bestScore {
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -85%);
+            font-size: 6.5rem;
+            text-align: center;
+        }
+
+        /* message debut de partie */
+        #countdown {
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -115%);
+            font-size: 10rem;
+            text-align: center; 
+        }
+
+    #lvl {
+        position:absolute;
+        bottom:100%;
+        left:50%;
+        transform: translate(-50%, 0);
+        font-weight: bold;
+    }
+
+    .scores{
+        position:absolute;
+        top:100%;
+        font-weight: bold;
+    }
+
+        /* record à battre (nombre en bas à droite) */
+        #best_score {
+            position:fixed;
+            left: 100%;
+            transform: translate(-100%, 0);
+        }
 
 #version {
     position: absolute;
@@ -95,90 +142,54 @@
     font-size: 0.625rem;
 }
 
-nav {
-    position: absolute;
-    display: block;
-    top: 5%;
-    left: 23%; 
-    padding: 0%;
-    margin: 0%;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline-block;
-    padding: 0.625rem;
-    font-size: 1.25rem;
-    border-radius: 5%;
-}
-
-nav ul li:hover {
-    color: #86A058;
-    cursor: pointer;
-    background-color: #20231C;
-}
-
-h1 {
-    font-size: 5rem;
-}
-
 a {
     text-decoration: none;
 }
 
+/* fleches pour mobile, position */
 .arrows {
     position:absolute;
     display: none;
-    left:42%;
+    left:50%;
     top: 65%;
+    transform: translate(-50%, 0);
     z-index: 100;
 }
 
+/* fleches pour mobile, dessin */
 .arrow-up {
     width: 0;
     height: 0;
-    
     border-right: 1.875rem solid transparent;
     border-left: 1.875rem solid transparent;
-    
     border-bottom: 2.3125rem solid #20231C;
 }
 
 .arrow-right {
     width: 0;
     height: 0;
-    
     border-top: 1.875rem solid transparent;
     border-bottom: 1.875rem solid transparent;
-    
     border-left: 2.3125rem solid #20231C;
 }
 
 .arrow-down {
     width: 0;
     height: 0;
-    
     border-right: 1.875rem solid transparent;
     border-left: 1.875rem solid transparent;
-    
     border-top: 2.3125rem solid #20231C;
 }
 
 .arrow-left {
     width: 0;
     height: 0;
-    
     border-top: 1.875rem solid transparent;
     border-bottom: 1.875rem solid transparent;
-    
     border-right: 2.3125rem solid #20231C;
 }
 
+/* position relative (entre elles) */
 #arrowup {
     display: block;
 }
@@ -200,6 +211,7 @@ a {
     top: 28%;
 }
 
+
 @media screen and (max-height:550px) {
     #addleft{
         display: none;
@@ -209,49 +221,48 @@ a {
         display: none;
     }
 
-    #screen {
-        border: 0.125rem solid black;
-        width: 12.5rem;
-        height: 12.5rem;
-    }
-
     .cadre_du_jeu {
         left: 10%;
         top: 60%;
         transform: translate(0, -60%);
     }
 
-    #gameOver {
-        font-size: 3.125rem;
-    }
+        #screen {
+            border: 0.125rem solid black;
+            width: 12.5rem;
+            height: 12.5rem;
+        }
 
-    #bestScore {
-        font-size: 3.125rem;
-    }
+        h1 {
+            font-size: 3.125rem;
+        }
+    
+        nav ul li {
+            padding: 0.375rem;
+            font-size: 0.75rem;
+            color: #86A058;
+            background-color: #20231C;
+        }
+    
+        #gameOver {
+            font-size: 3.5rem;
+        }
 
-    nav{
-        left: 15%;
-    }
+        #bestScore {
+            font-size: 3.5rem;
+        }
 
-    h1 {
-        font-size: 3.125rem;
-    }
+        #countdown {
+            font-size: 6rem;
+        }
 
-    nav ul li {
-        padding: 0.375rem;
-        font-size: 0.75rem;
-        border-radius: 5%;
-        color: #86A058;
-        background-color: #20231C;
-    }
+        #lvl {
+            font-size: 0.75rem;
+        }
 
-    .scores{
-        font-size: 0.75rem;
-    }
-
-    #lvl {
-        top: -12%;
-    }
+        .scores{
+            font-size: 0.75rem;
+        }
 
     .arrows{
         display: block;
@@ -262,8 +273,8 @@ a {
     #version {
         display: none;
     }
-
 }
+
 
 @media screen and (max-width:600px) {
     #addleft{
@@ -274,48 +285,47 @@ a {
         display: none;
     }
 
-    #screen {
-        border: 0.125rem solid black;
-        width: 15.625rem;
-        height: 15.625rem;
-    }
-
     .cadre_du_jeu {
         top: 10%;
         transform: translate(-50%, 0);
     }
 
-    #gameOver {
-        font-size: 4.0625rem;
-    }
+        #screen {
+            border: 0.125rem solid black;
+            width: 15.625rem;
+            height: 15.625rem;
+        }
 
-    #bestScore {
-        font-size: 4.0625rem;
-    }
+        h1 {
+            font-size: 3.125rem;
+        }
+    
+        nav ul li {
+            padding: 0.4375rem;
+            font-size: 0.875rem;
+            color: #86A058;
+            background-color: #20231C;
+        }
 
-    nav{
-        left: 20%;
-    }
+        #gameOver {
+            font-size: 4.5rem;
+        }
 
-    h1 {
-        font-size: 3.125rem;
-    }
+        #bestScore {
+            font-size: 4.5rem;
+        }
 
-    nav ul li {
-        padding: 0.4375rem;
-        font-size: 0.875rem;
-        border-radius: 5%;
-        color: #86A058;
-        background-color: #20231C;
-    }
+        #countdown {
+            font-size: 6rem;
+        }
 
-    .scores{
-        font-size: 0.875rem;
-    }
+        #lvl {
+            font-size: 0.875rem;
+        }
 
-    #lvl {
-        top: -10%;
-    }
+        .scores{
+            font-size: 0.875rem;
+        }
 
     .arrows{
         display: block;

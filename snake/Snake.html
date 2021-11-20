@@ -4,18 +4,20 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <meta name = "description" content = "Jeu vidéo Snake" />
+    <meta name = "description" content = "Jeu vidéo Snake." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Snake</title>
     <script src="./js/main.js" defer></script>
     <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <link rel="icon" href="./Images/snake-logo.ico" />
 </head>
 
 <body>
     <div class="cadre_du_jeu">
         <canvas id="screen" width=400 height=400></canvas>
-        <!-- on déclare le menu apres le canvas pour qu'il s'affiche au dessus -->
+
+        <!-- Menu -->
         <div class="menu_jeu"> 
             <nav id = "menu">
                 <h1 class = "element_menu"> Snake </h1>
@@ -26,6 +28,8 @@
                     <li id="boutonHard"> Hard </li>
                 </ul>
             </nav>
+
+            <!-- Interface -->
             <div>
                 <h2 id = "gameOver">
                     <a href="Snake.html"> Game Over! </a>
@@ -34,23 +38,22 @@
                 <h2 id = "bestScore">
                     <a href="Snake.html"> Best Score! </a>
                 </h2>
-
-            </div>
-
-            <!-- niveau -->
-            <span id = "lvl"> </span>
-
-            <!-- score et best score -->
-            <div class = "scores">
-                <span id = "score"></span>
-                <span id = "best_score"></span>
+                <h2 id = "countdown"></h2>
             </div>
         </div>
+
+        <!-- niveau -->
+        <span id = "lvl"> </span>
+
+        <!-- score et best score -->
+        <span class = "scores">
+            <span id = "score"></span>
+            <span id = "best_score"></span>
+        </span>
     </div>
 
     <!-- adds sur les côtés pour combler le vide -->
     <div id = "addleft"></div>
-
     <div id = "addright"></div>
 
     <!-- fleches mobile -->
