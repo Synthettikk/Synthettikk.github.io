@@ -20,7 +20,6 @@ function freqScreen() {
         const time = Date.now() - start;
         freqCalcul = Math.round(nombreImages / (time / 1000)); // time est en millisecondes -> on le passe en secondes pour avoir des Herz
         nombreImages += 1;
-        // console.log(frequenceEcran, freqCalcul, time, nombreImages);
         requestAnimationFrame(freqScreen);
     }
 }
@@ -118,8 +117,9 @@ const boutonArrowLeft = document.getElementById("arrowleft");
 ///////////////////////////////////////////// MECANIQUE //////////////////////////////////////////
 
 function game() {
-    const timeout = 7.5 * (frequenceEcran / 144) / vitesse; // temps entre 2 changements de direction; // 7.5 est empirique
+    const timeout = 8 / vitesse; // temps entre 2 changements de direction; // 8 est empirique
     let timer = 0; // compte les images apres un changement de direction
+    let init = 100 * (frequenceEcran / 144); // compteur au debut du jeu (en nb d'images)
     let rayonSnake = 0; // le rayon des billes du snake ont un rayon = 0 à la premiere image
     let colorSnake = "#FFC264"
     const tailleCase = 10; // construit pour etre un multiple de 10
@@ -434,7 +434,12 @@ function game() {
         pomme_Affichage();
         snake_Update();
         collisionPomme();
-        gameOver();
+        if (init <= 0) { //empeche un bug au demarrage
+            gameOver();
+        }
+        else {
+            init -= 1;
+        }
         scoregame.innerHTML = score();
         
         requestAnimationFrame(loop);
