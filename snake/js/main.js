@@ -117,7 +117,7 @@ const boutonArrowLeft = document.getElementById("arrowleft");
 ///////////////////////////////////////////// MECANIQUE //////////////////////////////////////////
 
 function game() {
-    const timeout = 8 / vitesse; // temps entre 2 changements de direction; // 8 est empirique
+    const timeout = 8 * (frequenceEcran / 144) / vitesse; // temps entre 2 changements de direction; // 8 est empirique
     let timer = 0; // compte les images apres un changement de direction
     let init = 100 * (frequenceEcran / 144); // compteur au debut du jeu (en nb d'images)
     let rayonSnake = 0; // le rayon des billes du snake ont un rayon = 0 à la premiere image
