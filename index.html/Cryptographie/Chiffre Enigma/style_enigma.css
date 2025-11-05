@@ -1,0 +1,62 @@
+input[type=number]::-webkit-inner-spin-button{
+    -webkit-appearance: normal;
+}
+
+option{
+    background-color: rgb(129, 179, 60);
+    font-family: 'dox_matrix', "Ubuntu Mono", math;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+select{
+    border: none;
+    outline: none;
+    /* height: 85% !important; */
+    padding: 0 2% 0 2% !important;
+}
+
+.coef{
+    max-width: 91%;
+    width: 91%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* voir ici pour centrer les nombres et lettres */
+.center_text{
+   text-align: center;
+    width: 30%;
+}
+
+.setting_plugboard{
+    max-width: 93.5%;
+    width: 93.5%;
+
+}
+
+.enigma_buttons{
+    height: 1.8vw;
+    width: 2.4vw;
+    margin: 3%;
+    box-shadow: inset 0.03rem 0.03rem 0.07rem rgba(255, 255, 255, 0.5), 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.8)
+}
+
+.enigma_coefficients{
+    max-height: 20%;
+    height: 20%;
+}
+
+/* Largeur change en fct de la page et des parametres de cryptage*/
+.setting{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.image_link{
+    color: black;
+}

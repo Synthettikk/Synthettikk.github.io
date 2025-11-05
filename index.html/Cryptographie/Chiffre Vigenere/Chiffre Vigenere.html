@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Simulation du chiffrement de Vigenère." />
+        <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+        <link rel="stylesheet" type="text/css" href="../style_crypto_2.css"/>
+        <link rel="stylesheet" type="text/css" href="style_vigenere_cipher.css"/>
+        <title> Chiffre de Vigenère </title>
+        <script src = "../style_crypto.js" defer></script>
+        <script src="chiffrement vigenere.js" defer></script>
+
+    </head>
+    <body>
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "../index.html">
+                    <img src = "../../../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "Logo Site"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "../index_crypto.html"> Cryptographie </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                    <li><a href="../Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                    <li><a href="../Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                    <li><a href="../Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                    <li><a href="../Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                    <li><a href="../Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                    <li><a href="#">Représentation de GL2</a></li>
+                                    <li><a href="../../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Jeux </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> À propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <main>
+            
+            
+            <div class = "main_blocs">
+                <div class = "left_bloc">
+                    <div class = "crypto_settings">
+                        <div class = "coefficients">
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Alphabet</p></div>
+                                <input type = "text" name = "alphabet" id = "alphabet" value = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" class = "alphabet screens"/>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class = "coefficients">
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Clé</p></div>
+                                <input type = "text" name = "key" id = "key" value = "TEST" class = "alphabet screens"/>    
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class = "frames">
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "clear message" id = "clear" class = "screens">TEXTE CLAIR (MAJUSCULES)</textarea>
+                            <input type = "button" value = "Chiffrer" id = "cipher_button" class = "button">
+                        </div>
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "encrypted message" id = "encrypted" class = "screens">TEXTE CHIFFRE (MAJUSCULES)</textarea>
+                            <input type = "button" value = "Déchiffrer" id = "decipher_button" class = "button">
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <div class = "right_bloc">
+                    <h1 id="toggle-right">CHIFFRE DE VIGENERE</h1>
+                    <div id = "text_right">
+                        <p class="text_right">Le chiffrement de Vigenère consiste en une substitution poly-alphabétique, 
+                        c'est-à-dire qu'une lettre de l'alphabet peut être transformée en plusieurs autres lettres différentes.
+                        <br>
+                        <h2>Principe:</h2>
+                        Posons L la taille de l'alphabet, M le nombre de lettre du message clair
+                        et n un entier entre 0 et M.
+                        <h3>Chiffrement:</h3>
+                        Pour chiffrer une lettre, par exemple la n-ième lettre du texte clair.
+                        Soit x la valeur de sa position dans l'alphabet ('A' = 0, 'B' = 1, ..., 'Z' = 25), y celle de la n-ième lettre de la clé
+                        et x' la valeur de la position de la lettre chiffrée correspondant.
+                        On calcule x' tel que x' = x + y mod(L).
+                        <br>
+                        <h3>Déchiffrement:</h3>
+                        Soit x' la position dans l'alphabet de la n-ième lettre du message chiffré. 
+                        On veut retrouver x, la position de la lettre de départ, non chiffrée. 
+                        On a x = (x' - y) mod(L). 
+                        <br>
+                        <h2>Sécurité:</h2>
+                        Tout dépend de la clé choisie. A priori, la sécurité est quasi nulle. 
+                        Cependant, avec certains critères (1.La clé doit être au moins aussi longue que le message à chiffrer. 
+                        2.Les lettres composant la clé doivent être choisis de façon totalement aléatoire. 
+                        3.Chaque clé, ou « masque », ne doit être utilisée qu'une seule fois.),
+                        il est démontré mathématiquement que le chiffre est inviolable.
+                        Dans ce cas particulier, la méthode s'appelle chiffre de Vernam (ou masque jetable ou one time pad).
+                        <h2>Un peu d'Histoire:</h2>
+                        Cette méthode été inventée en 1553 par Giovan Battista Bellaso.
+                        En 1583, Blaise de Vigenère crée la table de Vigenère qui synthétise la méthode de Bellaso et lui laisse son nom.
+                        Pour les communications les plus secrètes de l'époque, les clés utilisées étaient 
+                        des oeuvres littéraires entières.
+                        Au cours des années cette méthode a possédé plusieurs variantes par exemple
+                        en utilisant plusieurs clés superposées.
+                    </p>
+                    </div>
+                </div>
+            </div>
+            
+
+        </main>
+        
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2023-10-01">MAJ : Octobre 2023 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>
+
+    </body>

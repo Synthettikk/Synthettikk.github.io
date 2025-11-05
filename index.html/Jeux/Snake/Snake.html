@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name = "description" content = "Jeu vidéo Snake." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake</title>
+    <script src="./js/main2.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <link rel = "stylesheet" type="text/css" href = "../../../style/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+    <!-- <link rel="icon" href="./Images/snake-logo.ico" /> -->
+</head>
+
+<body>
+    <!--Bandeau en haut de la page--> 
+    <header class = "site_header">
+        <div class = "inside_header">
+            <div class = "position_logo"><a href = "../index.html">
+                <img src = "../../../Images test/image test.png" 
+                    width = "75"
+                    height = "54"
+                    alt = "Logo Site"/>
+            </a></div>
+
+            <!-- Navigation -->
+            <nav>
+                <div class = "conteneur-nav">
+                    <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                            width = "30"
+                            height = "30"
+                            alt = "Afficher/Cacher le menu" > </label>
+                    <input type = "checkbox" id = "mobile" role = "button">
+                    <ul>
+                        <li class = "deroulant"><a href = "../../Cryptographie/index_crypto.html"> Cryptographie </a>
+                            <ul class = "sous_menu">
+                                <li><a href="../../Cryptographie/Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                <li><a href="../../Cryptographie/Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                <li><a href="../../Cryptographie/Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                <li><a href="../../Cryptographie/Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                <li><a href="../../Cryptographie/Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                <li><a href="../../Cryptographie/Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                            <ul class = "sous_menu">
+                                <li><a href="../../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                <li><a href="#">Représentation de Matrices (GL2)</a></li>
+                                <li><a href="../../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "#"> Jeux </a>
+                            <ul class = "sous_menu">
+                                <li><a href="#">Snake</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "#"> Divers </a>
+                            <ul class = "sous_menu">
+                                <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- Boutons à droite -->
+                    <ul class = "boutons_droite">
+                        <li><a href = "#"> A propos </a></li>
+                        <li><a href = "#"> Contact </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <div class="cadre_du_jeu">
+        <canvas id="screen" width=900 height=900></canvas>
+
+        <!-- Menu -->
+        <div class="menu_jeu"> 
+            <div id = "menu">
+                <h1 class = "element_menu"> Snake </h1>
+                <p class = "element_menu"> Choose mode : </p>
+                <div class = "element_menu" style = "margin-top: 5%";>
+                    <span id="boutonEasy"> Easy </span>
+                    <span id="boutonMedium"> Medium </span>
+                    <span id="boutonHard"> Hard </span>
+                </div>
+            </div>
+
+            <!-- Interface -->
+            <div>
+                <h2 id = "gameOver">
+                    Game Over
+                    <!-- <a href="Snake.html"> Game Over! </a> -->
+                </h2>
+
+                <h2 id = "bestScore">
+                    Best Score!
+                    <!-- <a href="Snake.html"> Best Score! </a> -->
+                </h2>
+                <h2 id = "countdown"></h2>
+            </div>
+        </div>
+
+        <!-- niveau -->
+        <span id = "lvl"> </span>
+
+        <!-- score et best score -->
+        <span class = "scores">
+            <span id = "score"></span>
+            <span id = "best_score"></span>
+        </span>
+    </div>
+
+    <!-- adds sur les côtés pour combler le vide -->
+    <div id = "addleft"></div>
+    <div id = "addright"></div>
+
+    <!-- fleches mobile -->
+    <div class = "arrows">
+        <div id = 'arrowup' class = "arrow-up"></div>
+        <div id = 'arrowright' class = "arrow-right"></div>
+        <div id = 'arrowdown' class = "arrow-down"></div>
+        <div id = 'arrowleft' class = "arrow-left"></div>
+    </div>
+
+    <!-- bouton quitter le jeu -->
+    <!-- <a href = "../Jeux.html" id = "leave_game"> Quit </a> -->
+    
+    </main>
+    
+    <footer class="site-footer" role="contentinfo">
+        <time datetime="2023-10-01">MAJ : Octobre 2023 </time>
+        <span class="name"> © Pierre F.</span>
+    </footer>
+</body>
+
+</html>

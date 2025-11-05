@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MathQuill Quickstart</title>
+    <link rel = "stylesheet" type="text/css" href = "math function css.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js" type="text/javascript"></script>  
+    <!-- MathJs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.0/math.min.js"></script> 
+    <!-- math function -->
+    <script src="math function.js" defer></script>
+  </head>
+  <body>
+    <div id = "math_table" >
+      <span id = 'square'> x^2 </span> <!-- \[ ☐^2 \] -->
+      <span id = 'sqrt'> \sqrt x </span>
+      <span id = 'abs'> | x | </span>
+      <span id = 'frac'> \frac{a}{b} </span>
+      <span id = 'ln'> \ln </span>
+      <span id = 'exp'> e^x </span>
+      <span id = 'pow'> a^b </span>
+      <span id = 'pi'> \pi </span>
+      <span id = 'e'> e </span>
+      <!-- saut de ligne -->
+      <span id = 'sin'> \sin </span>
+      <span id = 'cos'> \cos </span>
+      <span id = 'tan'> \tan </span>
+      <span id = 'arcsin'> \arcsin </span>
+      <span id = 'arccos'> \arccos </span>
+      <span id = 'arctan'> \arctan </span>
+      <span id = 'sinh'> \sinh </span>
+      <span id = 'cosh'> \cosh </span>
+      <span id = 'tanh'> \tanh </span>
+    </div>
+
+    <!-- <input id = "variable_value" type="number"> -->
+    <div class = "math-field-button-container">
+      <span id="math-field"></span>
+      <input id = "exec_script" type="button" value = "Go">
+    </div>
+    
+
+    <code id="latex"></code>
+
+
+    <p id = "result"></p>
+
+    <canvas id = "canvas" 
+            width = "1200" 
+            height = "1200"> 
+    </canvas>
+    
+    <script>
+      //const staticMathSpan = document.getElementById('square');
+      const mathFieldSpan = document.getElementById('math-field');
+      const latexSpan = document.getElementById('latex');
+
+      const MQ = MathQuill.getInterface(2); // keeps the API stable
+
+      // easily create static or editable math from a DOM element by calling the
+      // appropriate constructor: http://docs.mathquill.com/en/latest/Api_Methods/
+
+      
+      //MQ.StaticMath(document.getElementById('sqrt'));
+      document.querySelectorAll("#math_table > span").forEach((elem) => {
+        MQ.StaticMath(elem);
+      });
+      // you may pass in an options object:
+      const mathField = MQ.MathField(mathFieldSpan, {
+        spaceBehavesLikeTab: true, // an example config option, for more see:
+        //   http://docs.mathquill.com/en/latest/Config/
+        handlers: {
+          edit: function () {
+            // retrieve, in LaTeX format, the math that was typed:
+            latexSpan.textContent = mathField.latex();
+          },
+        },
+      });
+
+    </script>
+
+
+  </body>
+</html>

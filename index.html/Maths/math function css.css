@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+}
+
+#canvas{
+    display:block;
+    /* border: 1px solid black; */
+    margin:auto;
+}
+
+#exec_script{
+    cursor: pointer;
+    height: 100%;
+    width: 4%;
+}
+
+#latex{
+    display: none;
+}
+
+#math-field{
+    display: flex;
+    height: 100%;
+    width: 95%;
+    align-items: center;
+}
+
+#math_table{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+    height: 4.6em;
+    width: 80%;
+}
+
+#math_table > span{
+    padding: 0.7%;
+    display:flex;
+    align-items: center;
+    border: 1px solid rgb(223, 223, 223);
+    cursor: pointer;
+    margin: auto;
+    text-align: center;
+    height:48%;
+    width: 10.7%;
+}
+
+#math_table > span:hover{
+    background-color: rgb(223, 223, 223);
+}
+
+.math-field-button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.2em auto 1.2em auto;
+    height: 4em;
+    width: 72%;
+}

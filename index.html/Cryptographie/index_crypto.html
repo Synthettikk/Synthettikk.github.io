@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Une description de la page..." />
+        <link rel="stylesheet" type="text/css" href="../../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="../../style/nav.css"/>
+        <!-- <link rel="stylesheet" type="text/css" href="../../style/nav.css"/> -->
+        <link rel="stylesheet" type="text/css" href="style_crypto_2.css"/>
+        <link rel="stylesheet" type="text/css" href="style_menu_crypto.css"/>
+        <title> Menu crypto </title>
+    </head>
+
+    <body>
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "../index.html">
+                    <img src = "../../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "descriptif de l'image si elle s'affiche mal"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "#"> Cryptographie </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                    <li><a href="Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                    <li><a href="Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                    <li><a href="Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                    <li><a href="Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                    <li><a href="Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                    <li><a href="#">Représentation de GL2</a></li>
+                                    <li><a href="../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Jeux </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Jeux/Snake/Snake.html">Snake</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> A propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="crypto-menu" aria-label="Menu crypto">
+                <div class="menu-banner">
+                    <h2>Menu Crypto</h2>
+                    Les pages de cette section présentent quelques cryptosystèmes classiques 
+                    et permettent de jouer avec via une interface graphique.
+                    Pour le moment, seulement des méthodes de chiffrement sont présentées.
+                    Une méthode de hashage (MD4) sera bientôt disponible.
+                    <br>
+                    <strong>Note :</strong> Les implémentations données ici 
+                    (même pour les cryptosystèmes d'actualité) ont pour seul but 
+                    d'être pédagogiques et ne doivent pas être 
+                    utilisées pour de la sécurité réelle.
+                </div>
+
+                <ul class="menu-grid">
+                    <li><a class="menu-card" href="Chiffre affine/Chiffrement affine.html">
+                    <div class="card-title">Affine</div>
+                    <div class="card-desc">Décalage mono alphabétique simple — symétrique</div>
+                    <div class="card-badge">Chiffre</div>
+                    </a></li>
+
+                    <li><a class="menu-card" href="Chiffre Vigenere/Chiffre Vigenere.html">
+                    <div class="card-title">Vigenère</div>
+                    <div class="card-desc">Substitution polyalphabétique ; potentiellement inviolable — symétrique</div>
+                    <div class="card-badge">Chiffre</div>
+                    </a></li>
+
+                    <li><a class="menu-card" href="Chiffre Enigma/Enigma.html">
+                    <div class="card-title">Enigma</div>
+                    <div class="card-desc">Substitution polyalphabétique. Machine éléctromécanique — symétrique</div>
+                    <div class="card-badge">Chiffre</div>
+                    </a></li>
+
+                    <li><a class="menu-card" href="Chiffre RSA/Chiffre RSA.html">
+                    <div class="card-title">RSA</div>
+                    <div class="card-desc">Basé sur le problème de la factorisation des entiers — asymétrique
+                    </div>
+                    <div class="card-badge">Chiffre</div>
+                    </a></li>
+
+                    <li><a class="menu-card" href="Chiffre El Gamal/Chiffre El Gamal.html">
+                    <div class="card-title">El Gamal</div>
+                    <div class="card-desc">Basé sur le problème du logarithme discret — asymétrique</div>
+                    <div class="card-badge">Chiffre</div>
+                    </a></li>
+
+                    <li><a class="menu-card" href="Chiffre Hill/Chiffre Hill.html">
+                    <div class="card-title">Hill</div>
+                    <div class="card-desc">Substitution polyalphabétique linéaire — symétrique</div>
+                    <div class="card-badge">Chiffre</div>
+                    </a></li>
+
+                </ul>
+
+                </div>
+        </main>
+        
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2025-10-01">MAJ : Octobre 2025 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>
+    </body>
+</html>

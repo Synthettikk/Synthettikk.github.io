@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Mes mémoires en TDN." />
+        <link rel="stylesheet" type="text/css" href="style_TDN.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+        <title> Théorie des nombres </title>
+    </head>
+    <body>
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "../index.html">
+                    <img src = "../../../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "Logo Site"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "Index sous dossier.html"> Cryptographie </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Cryptographie/Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                    <li><a href="../../Cryptographie/Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                    <li><a href="../../Cryptographie/Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                    <li><a href="../../Cryptographie/Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                    <li><a href="../../Cryptographie/Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                    <li><a href="../../Cryptographie/Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                    <li><a href="#">Représentation de GL2</a></li>
+                                    <li><a href="#">Théorie des nombres</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Jeux </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> A propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            Le but de cette page est d'afficher les mémoires de M1 et M2 en TDN.
+
+        <section class="memos">
+        <h2>Mes mémoires de Master en Théorie des Nombres</h2>
+
+        <article class="memo">
+            <div class="meta">
+            <span class="year">2025</span>
+            <span class="type">M2</span>
+            </div>
+            <div class="content">
+            <h3 class="title">Fonctions L p-adiques classiques : fonctions zêta et formes modulaires</h3>
+            <p class="desc">
+                Ce mémoire présente des résultats classiques sur la fonction zêta p-adique de Kubota-Leopoldt,
+                les fonctions L de formes modulaires construites avec les coefficients apparaissant
+                dans le q-développement des formes modulaires, et les fonctions L p-adiques de formes modulaires.
+                Toutes ces fonctions généralisent la fonction zêta de Riemann.
+            </p>
+            <div class="actions">
+                <a class="btn primary" href="Memoire M2 PF.pdf" target="_blank" rel="noopener noreferrer">📄 Ouvrir</a>
+                <a class="btn" href="Memoire M2 PF.pdf" download>⬇️ Télécharger</a>
+            </div>
+            </div>
+        </article>
+
+        <article class="memo">
+            <div class="meta">
+            <span class="year">2024</span>
+            <span class="type">M1</span>
+            </div>
+            <div class="content">
+            <h3 class="title">Fonctions L de Dirichlet et fonctions zêta de Dedekind</h3>
+            <p class="desc">
+                Ce travail a pour but de présenter les fonctions L de Dirichlet 
+                et zêta de Dedekind et de montrer des résultats classiques de théorie 
+                des nombres (comme le théorème de la progression arithmétique et 
+                la formule du nombre de classes) liés aux résidus en 1 de ces 
+                fonctions.
+                <br> 
+                La fin de ce mémoire comporte quelques erreurs. En particulier le 
+                chapitre 4 sur les fonctions zêta de Dedekind mériterait d'être 
+                entièrement refait.
+                <br> 
+                Une seconde version plus avancée et qui corrige les quelques erreurs 
+                sera bientôt disponible.
+            </p>
+            <div class="actions">
+                <a class="btn primary" href="Memoire M1 V1 PF.pdf" target="_blank" rel="noopener noreferrer">📄 Ouvrir</a>
+                <a class="btn" href="Memoire M1 V1 PF.pdf" download>⬇️ Télécharger</a>
+            </div>
+            </div>
+        </article>
+
+        </section>
+        </main>
+
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2025-10-01">MAJ : Octobre 2025 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>

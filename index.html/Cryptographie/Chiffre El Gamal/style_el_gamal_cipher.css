@@ -1,0 +1,12 @@
+.coef{
+    max-width: 55%;
+    width: 55%;
+}
+
+/* Largeur change en fct de la page et des parametres de cryptage*/
+.setting{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}

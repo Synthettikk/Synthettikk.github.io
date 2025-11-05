@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Simulateur naïf du cryptosystème RSA." />
+        <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+        <link rel="stylesheet" type="text/css" href="../style_crypto_2.css"/>
+        <link rel="stylesheet" type="text/css" href="style_rsa_cipher.css"/>
+        <title> Chiffre RSA </title>
+        <script src = "../style_crypto.js" defer></script>
+        <script src="chiffrement rsa.js" defer></script>
+
+    </head>
+    <body>
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "../index.html">
+                    <img src = "../../../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "Logo Site"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "../index_crypto.html"> Cryptographie </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                    <li><a href="../Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                    <li><a href="../Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                    <li><a href="../Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                    <li><a href="../Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                    <li><a href="../Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                    <li><a href="#">Représentation de GL2</a></li>
+                                    <li><a href="../../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Jeux </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> A propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <main>
+            
+            
+            <div class = "main_blocs">
+                <div class = "left_bloc">
+                    <div class = "crypto_settings">
+                        <div class = "coefficients">
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Clé publique E</p></div>
+                                <input type = "text" name = "coef_e" id = "coef_e" value = "65537" class = "screens coef"/>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class = "coefficients">
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Clé publique N</p></div>
+                                <input type = "text" name = "coef_n" id = "coef_n" value = "143" class = "screens coef"/>    
+                            </div>
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Clé privée D</p></div>
+                                <input type = "text" name = "coef_d" id = "coef_d" value = "113" class = "screens coef"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class = "frames">
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "clear message" id = "clear" class = "screens">TEXTE CLAIR</textarea>
+                            <input type = "button" value = "Chiffrer" id = "cipher_button" class = "button">
+                        </div>
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "encrypted message" id = "encrypted" class = "screens">TEXTE CHIFFRE</textarea>
+                            <input type = "button" value = "Déchiffrer" id = "decipher_button" class = "button">
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <div class = "right_bloc">
+                    <h1 id="toggle-right">CHIFFRE RSA</h1>
+                    <div id="text_right">
+                        <p class="text_right">Le chiffrement RSA est une méthode cryptographique asymétrique
+                        c'est-à-dire que l'on a besoin d'une clé publique pour chiffrer des messages
+                        et d'une clé privée pour les déchiffrer.
+                        <br>
+                        <h2>Principe:</h2>
+                        Soient deux nombres premiers p et q de taille similaire que l'on multiplie entre eux
+                        tels que pq = N, phi(N) = (p-1)(q-1), E un nombre premier avec phi(N) et D l'inverse
+                        de E modulo phi(N). (E, N) est la clé de chiffrement, (D, N) la clé de déchiffrement.
+                        Tout repose sur le fait qu'il est très difficile de retrouver p et q et donc D à partir de N.
+                        <h3>Chiffrement:</h3>
+                        Après conversion du message en code par exemple ascii en un nombre X plus petit
+                        que la clé N (quitte à découper le message), 
+                        on calcule X' = X ^ E mod(N), le message (nombre) chiffré.
+                        <br>
+                        <h3>Déchiffrement:</h3>
+                        Soit X' le nombre résultant du chiffrement.
+                        On retrouve X le nombre de départ ascii par X = X'^ D mod(N) puis on le 
+                        reconvertit en caractères.
+                        <br>
+                        <h2>Sécurité:</h2>
+                        Pour que le chiffre soit sûr, il y a plusieurs conditions sur la clé 
+                        et sur l'algorithme lui-même à respecter. Par exemple, actuellement, il est conseillé de choisir
+                        des clés d'au moins 2048 bits (p et q de 308 chiffres chacun).
+                        Attention: l'algorithme implémenté ici possède des failles (sensible aux attaques par chronométrage entre autre)
+                        et ne devrait pas être utilisé comme moyen de chiffrer des informations délicates.
+                        <h2>Un peu d'Histoire:</h2>
+                        En 1977, Ronald Rivest (R), Adi Shamir (S) et Leonard Adleman (A) inventent l'algorithme
+                        RSA par hasard en cherchant à prouver que tout chiffrement à clé
+                        publique possède une faille.
+                        De nos jours, c'est la méthode asymétrique la plus utilisée en particulier
+                        pour échanger des clés de systèmes symétriques moins coûteux en temps de calcul.
+                    </p>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2023-10-01">MAJ : Octobre 2023 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>
+        
+    </body>

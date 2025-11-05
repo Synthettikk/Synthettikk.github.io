@@ -1,0 +1,130 @@
+:root{
+  --bg: #FAFAF8;
+  --card: #FFFFFF;
+  --muted: #6B7280;
+  --accent: #0B5FFF;
+  --accent-2: #FF6B6B;
+  --shadow: 0 6px 18px rgba(15,23,42,0.06);
+  --radius: 10px;
+  --gap: 18px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+body{
+  background: linear-gradient(180deg,#f3f4f5 0%, #FFFFFF 70%);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:#0F172A;
+  margin:0;
+  height:100%;
+  min-height: 100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.memos{
+  max-width: 920px;
+  margin: 32px auto;
+  padding: 20px;
+  background: linear-gradient(180deg, var(--bg), #fff);
+  color: #111827;
+}
+
+.memos h2{
+  margin: 0 0 18px 0;
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.memo{
+  display: flex;
+  gap: var(--gap);
+  align-items: flex-start;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  margin: 20px;
+  transition: transform .18s ease, box-shadow .18s ease;
+  overflow: hidden;
+}
+
+.memo:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+}
+
+.meta{
+  min-width: 78px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  padding-left: 6px;
+}
+
+.meta .year{
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.meta .type{
+  font-size: 13px;
+  color: var(--muted);
+  background: rgba(11,95,255,0.06);
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.content{
+  flex: 1;
+}
+
+.title{
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  color: #0F172A;
+}
+
+.desc{
+  margin: 0 0 10px 0;
+  color: var(--muted);
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.actions{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0F172A;
+  background: rgba(15,23,42,0.04);
+  border: 1px solid rgba(15,23,42,0.05);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s;
+}
+
+.btn:hover{ transform: translateY(-3px); box-shadow: 0 6px 12px rgba(15,23,42,0.06); }
+
+.btn.primary{
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+}
+
+@media (max-width:700px){
+  .memo{ flex-direction: column; }
+  .meta{ flex-direction: row; gap: 10px; min-width: auto; }
+  .memos{ padding: 12px; }
+}

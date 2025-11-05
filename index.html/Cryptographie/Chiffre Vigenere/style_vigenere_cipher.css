@@ -1,0 +1,12 @@
+.alphabet{
+    min-width: 157%;
+    width: 157%;
+}
+
+/* Largeur change en fct de la page et des parametres de cryptage*/
+.setting{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}

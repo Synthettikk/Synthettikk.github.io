@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Curseur et Input synchronisés</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 5px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <label for="rangeInput">Sélectionnez une valeur (0 à 1)</label>
+    <input type="range" id="rangeInput" min="0" max="1" step="0.01" value="0.50">
+
+    <label for="numberInput">Ou entrez la valeur</label>
+    <input type="number" id="numberInput" min="0" max="1" step="0.01" value="0.50">
+  </div>
+
+  <script>
+    const rangeInput = document.getElementById('rangeInput');
+    const numberInput = document.getElementById('numberInput');
+
+    // Mettre à jour l'input number lorsque le range change
+    rangeInput.addEventListener('input', function() {
+      numberInput.value = rangeInput.value;
+    });
+
+    // Mettre à jour le range lorsque l'input number change
+    numberInput.addEventListener('input', function() {
+      // Optionnel: validation pour s'assurer que la valeur est entre 0 et 1
+      let value = parseFloat(numberInput.value);
+      if (isNaN(value)) {
+        value = 0;
+      }
+      if (value < 0) value = 0;
+      if (value > 1) value = 1;
+      numberInput.value = value;
+      rangeInput.value = value;
+    });
+  </script>
+</body>
+</html>

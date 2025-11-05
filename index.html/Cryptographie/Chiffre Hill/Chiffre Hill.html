@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Simulateur du chiffrement de Hill." />
+        <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+        <link rel="stylesheet" type="text/css" href="../style_crypto_2.css"/>
+        <link rel="stylesheet" type="text/css" href="style_hill_cipher.css"/>
+        <title> Chiffre de Hill </title>
+        <script src = "../style_crypto.js" defer></script>
+        <script src="chiffrement hill.js" defer></script>
+
+    </head>
+    <body>
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "../index.html">
+                    <img src = "../../../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "Logo Site"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "../index_crypto.html"> Cryptographie </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                    <li><a href="../Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                    <li><a href="../Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                    <li><a href="../Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                    <li><a href="../Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                    <li><a href="../Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                    <li><a href="#">Représentation de GL2</a></li>
+                                    <li><a href="../../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Jeux </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> A propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <main>
+            
+            
+            <div class = "main_blocs">
+                <div class = "left_bloc">
+                    <div class = "crypto_settings settings_row">
+                        <div class = "matrix_container">
+                            <div class = "matrix_and_plate_container">
+                                <div class="plate matrix_plate"> <p class="text_inside_plate">Matrice A</p></div>
+                                <table id = "left_matrix">
+                                    <tbody id = "left_matrix_body">
+                                        <tr>
+                                            <td><input type = "number" value = "3" class = "screens matrix_coef"/></td>
+                                            <td><input type = "number" value = "-1" class = "screens matrix_coef"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type = "number" value = "2" class = "screens matrix_coef"/></td>
+                                            <td><input type = "number" value = "3" class = "screens matrix_coef"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class = "matrix_buttons">
+                                <input type="button" id = "minus_button_left_matrix" value = "-" class = "button hill_matrix_buttons"/>
+                                <input type="button" id = "plus_button_left_matrix" value = "+" class = "button hill_matrix_buttons"/>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        <div class = "matrix_container">
+                            <div class = "matrix_and_plate_container">
+                                <div class="plate matrix_plate"> <p class="text_inside_plate">Matrice A¯¹</p></div>
+                                <table id = "right_matrix">
+                                    <tbody id = "right_matrix_body">
+                                        <tr>
+                                          <td id = "first_cell"><input name="cell" type = "number" value = "5" class = "screens matrix_coef"/></td>
+                                          <td><input name="cell" type = "number" value = "19" class = "screens matrix_coef"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type = "number" value = "14" class = "screens matrix_coef"/></td>
+                                            <td><input type = "number" value = "5" class = "screens matrix_coef"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class = "matrix_buttons">
+                                <input type="button" id = "minus_button_right_matrix" value = "-" class = "button hill_matrix_buttons"/>
+                                <input type="button" id = "plus_button_right_matrix" value = "+" class = "button hill_matrix_buttons"/>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class = "frames">
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "clear message" id = "clear" class = "screens">TEXTECLAIR</textarea>
+                            <input type = "button" value = "Chiffrer" id = "cipher_button" class = "button">
+                        </div>
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "encrypted message" id = "encrypted" class = "screens">TEXTECHIFFRE</textarea>
+                            <input type = "button" value = "Déchiffrer" id = "decipher_button" class = "button">
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <div class = "right_bloc">
+                    <h1 id="toggle-right">CHIFFRE DE HILL</h1>
+                    <div id="text_right">
+                        <p class="text_right">Le chiffrement de Hill est une méthode 
+                        cryptographique de substitution poly-alphabétique symétrique (la clé permet de chiffrer et déchiffrer)
+                        par bloc.
+                        <br>
+                        <h2>Principe:</h2>
+                        Notons m la "taille" d'une matrice de dimension m x m.
+                        Soit A une matrice de chiffrement de taille m et A¯¹
+                        la matrice de déchiffrement (c'est l'inverse de A modulo 26).
+                        On découpe le message à (dé)chiffrer en bloc de m lettres;
+                        (les lettres ne faisant pas partie de l'alphabet en majuscules
+                        sont remplacées par 'X') puis pour chaque bloc, on note la position 
+                        dans l'alphabet des lettres dans un vecteur.
+                        <h3>Chiffrement:</h3>
+                        Pour chaque vecteur x contenant les positions des lettres
+                        on calcule A*x = y, avec y le vecteur des positions chiffrées.
+                        Finalement, à partir des nouvelles positions on construit le message
+                        chiffré.
+                        On remarque que si A est de taille 1, on se retrouve dans le cas 
+                        d'un chiffrement affine avec A la matrice (coeffcient) et B = 0.
+                        <br>
+                        <h3>Déchiffrement:</h3>
+                        Pour chaque vecteur y contenant les positions des lettres chiffrées,
+                        on calcule A¯¹ * y = x, le vecteur des positions claires.
+                        Finalement, à partir des nouvelles positions on reconstruit 
+                        le message clair.
+                        <br>
+                        <h2>Sécurité:</h2>
+                        Cet algorithme est peu sûr. En effet, pour une matrice de taille n,
+                        il suffit de connaître n² lettres du message clair pour retrouver la matrice
+                        (sensible aux attaques à texte clair connu).
+                        De plus, il est sensible aux attaques à texte clair choisi.
+                        <h2>Un peu d'Histoire:</h2>
+                        Cette méthode a été inventée en 1929 par Lester S. Hill dans le but
+                        d'étendre la méthode de chiffrement affine afin de rendre plus 
+                        difficiles les analyses fréquentielles.
+                    </p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2023-10-01">MAJ : Octobre 2023 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>
+
+    </body>

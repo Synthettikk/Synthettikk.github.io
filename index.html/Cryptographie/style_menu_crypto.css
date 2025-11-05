@@ -1,0 +1,147 @@
+/* Variante : style néon / terminal, s'accorde aux fontes fournies */
+.crypto-menu{ width:100%; max-width:1100px; margin:4% auto; font-family:'Ubuntu Mono',sans-serif; color:#e6ffe6; }
+
+.menu-banner{
+  background: rgba(0,0,0,0.75);
+  border: 1px solid rgba(0,255,120,0.08);
+  color: #bfffbf;
+  padding:0.7rem 1rem;
+  border-radius:0.6rem;
+  text-align:center;
+  font-size:0.95rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.7), inset 0 0 14px rgba(0,255,120,0.02);
+  margin-bottom:2.2rem;
+}
+
+/* Grid responsive */
+.menu-grid{
+  display:grid;
+  gap:1.1rem;
+  grid-template-columns: repeat(3, 1fr);
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+@media (max-width:1000px){ .menu-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .menu-grid{ grid-template-columns:1fr; } }
+
+/* Card baseline */
+.menu-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:1.1rem;
+  min-height:9.2rem;
+  border-radius:0.9rem;
+  text-decoration:none;
+  color:inherit;
+  position:relative;
+  overflow:hidden;
+  background: linear-gradient(180deg, rgba(0,0,0,0.43), rgba(0,0,0,0.57));
+  border: 1px solid rgba(0,255,120,0.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6), inset 0 0 32px rgba(0,255,120,0.01);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+/* Left neon stripe */
+.menu-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:6px;
+  background: linear-gradient(180deg, rgba(0,255,120,0.95), rgba(0,150,80,0.6));
+  box-shadow: 0 0 14px rgba(0,255,120,0.12);
+  border-top-left-radius:0.9rem;
+  border-bottom-left-radius:0.9rem;
+}
+
+/* subtle scanline overlay */
+.menu-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.03) 50%, rgba(0,0,0,0));
+  background-size: 100% 6rem;
+  opacity:0.06;
+  pointer-events:none;
+}
+
+/* Hover / focus */
+.menu-card:hover, .menu-card:focus{
+  transform: translateY(-6px);
+  border-color: rgba(0,255,120,0.18);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.75), 0 0 40px rgba(0,255,120,0.035), inset 0 0 48px rgba(0,255,120,0.02);
+  outline: none;
+}
+
+/* Text parts */
+.card-title{
+  font-size:1.22rem;
+  font-weight:700;
+  letter-spacing:0.04rem;
+  z-index:1;
+  padding-left:0.6rem;
+  font-family:'Orbitron','dox_matrix','Ubuntu Mono';
+  color:#eaffea;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
+
+.card-desc{
+  display:inline-block;
+  margin-top:0.6rem;
+  font-family:'dox_matrix','Ubuntu Mono';
+  background: rgba(0,0,0,0.65);
+  color:#bfffbf;
+  padding:0.28rem 0.6rem;
+  border-radius:0.5rem;
+  font-size:0.92rem;
+  z-index:1;
+  box-shadow: inset 0 -2px 6px rgba(0,0,0,0.6);
+  margin-left:0.6rem;
+}
+
+/* badge at bottom-right */
+.card-badge{
+  align-self:flex-end;
+  margin-top:0.8rem;
+  background: rgba(0,0,0,0.6);
+  color:#ccffd9;
+  padding:0.24rem 0.5rem;
+  border-radius:0.5rem;
+  font-size:0.8rem;
+  border: 1px solid rgba(0,255,120,0.06);
+  font-family:'Ubuntu Mono';
+  z-index:1;
+  margin-left:0.6rem;
+}
+
+/* small glowing accent when active */
+.menu-card:active .card-title{
+  text-shadow: 0 0 10px rgba(0,255,120,0.18);
+}
+
+/* keyboard focus ring */
+.menu-card:focus{
+  box-shadow: 0 18px 42px rgba(0,0,0,0.75), 0 0 28px rgba(0,255,120,0.08);
+}
+
+/* reduce opacity for disabled/non-clickable cards (utility) */
+.menu-card.disabled{
+  pointer-events:none;
+  opacity:0.5;
+  filter:grayscale(0.2);
+}
+
+/* ensure left padding so content not under stripe */
+.menu-card > .card-title,
+.menu-card > .card-desc,
+.menu-card > .card-badge{ padding-left:0.6rem; }
+
+/* small responsive text sizing tweaks */
+@media (max-width:440px){
+  .card-title{ font-size:1.05rem; }
+  .card-desc{ font-size:0.86rem; }
+  .card-badge{ font-size:0.74rem; padding:0.2rem 0.44rem; }
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Simulateur de la machine Enigma I." />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+        <!-- <link rel="stylesheet" type="text/css" href="../../style.css"/> -->
+        <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+        <link rel="stylesheet" type="text/css" href="../style_crypto_2.css"/>
+        <link rel="stylesheet" type="text/css" href="style_enigma.css"/>
+        <title> Enigma </title>
+        <script src = "../style_crypto.js" defer></script>
+        <script src="settings.js" defer></script>
+        <script src="main.js" defer></script>
+
+    </head>
+    <body>
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "../index.html">
+                    <img src = "../../../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "Logo Site"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "../index_crypto.html"> Cryptographie </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                    <li><a href="../Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                    <li><a href="../Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                    <li><a href="../Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                    <li><a href="../Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                    <li><a href="../Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                    <li><a href="#">Représentation de GL2</a></li>
+                                    <li><a href="../../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Jeux </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> A propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <main>
+            
+            
+            <div class = "main_blocs">
+                <div class = "left_bloc">
+                    <div class = "crypto_settings">
+                        <div class = "coefficients enigma_coefficients">
+                            <div class="plate"> <p class="text_inside_plate">Reflector/Plugboard</p></div>
+
+                            <div class = "setting">
+                                
+                                <select name = "reflector" id = "reflector" class = "screens setting_plugboard">
+                                    <option value= '0'>UKW A</option>
+                                    <option value= '1'>UKW B</option>
+                                    <option value= '2'>UKW C</option> 
+                                </select>
+                            </div>
+                            <div class = "setting setting_plugboard">
+                                
+                                <input type = "text" name = "plugboard" id = "plugboard" value = "AB CD EF GH IJ KL MN OP" class = "screens setting_plugboard"/>   
+                            </div>
+                        </div>
+
+                        <div class = "coefficients enigma_coefficients">
+                            <div class="plate"> <p class="text_inside_plate">Rotors</p></div>
+                            <div class = "setting">
+                                
+                                <select name = "Rotors" id = "rotor1" class = "screens coef">
+                                    <option value='0'>I</option>
+                                    <option value='1'>II</option>
+                                    <option value='2'>III</option>
+                                    <option value='3'>IV</option>
+                                    <option value='4'>V</option> 
+                                </select>
+                                
+                            </div>
+                            <div class = "setting">
+                                <select name = "Rotors" id = "rotor2" class = "screens coef">
+                                    <option value='0'>I</option>
+                                    <option value='1'>II</option>
+                                    <option value='2'>III</option>
+                                    <option value='3'>IV</option>
+                                    <option value='4'>V</option> 
+                                </select>
+                                
+                                
+                            </div>
+                            <div class = "setting">
+                                <select name = "Rotors" id = "rotor3" class = "screens coef">
+                                    <option value='0'>I</option>
+                                    <option value='1'>II</option>
+                                    <option value='2'>III</option>
+                                    <option value='3'>IV</option>
+                                    <option value='4'>V</option> 
+                                </select>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        <div class = "coefficients enigma_coefficients">
+                            <div class="plate"> <p class="text_inside_plate">Positions</p></div>
+                            <div class = "setting">
+                                
+                                <input type="button" id = "minus_button_pos_rotor1" value = "-" class = "button enigma_buttons"/>
+                                <div class = "screens coef"><div id = "pos_number_rotor1" class = "center_text"></div> <div id = "pos_letter_rotor1" class = "center_text"></div> </div>
+                                <input type="button" id = "plus_button_pos_rotor1" value = "+" class = "button enigma_buttons"/>
+                            </div>
+                            <div class = "setting">
+                                <input type="button" id = "minus_button_pos_rotor2" value = "-" class = "button enigma_buttons"/>
+                                <div class = "screens coef"><div id = "pos_number_rotor2" class = "center_text"></div> <div id = "pos_letter_rotor2" class = "center_text"></div> </div>
+                                <input type="button" id = "plus_button_pos_rotor2" value = "+" class = "button enigma_buttons"/>
+                            </div>
+                            <div class = "setting">
+                                <input type="button" id = "minus_button_pos_rotor3" value = "-" class = "button enigma_buttons"/>
+                                <div class = "screens coef"><div id = "pos_number_rotor3" class = "center_text"></div> <div id = "pos_letter_rotor3" class = "center_text"></div> </div>
+                                <input type="button" id = "plus_button_pos_rotor3" value = "+" class = "button enigma_buttons"/>
+                            </div>
+                        </div>
+
+                        <div class = "coefficients enigma_coefficients">
+                            <div class="plate"> <p class="text_inside_plate">Rings</p></div>
+                            <div class = "setting">
+                                <input type="button" id = "minus_button_ring_rotor1" value = "-" class = "button enigma_buttons"/>
+                                <div class = "screens coef"><div id = "ring_number_rotor1" class = "center_text"></div> <div id = "ring_letter_rotor1" class = "center_text"></div> </div>
+                                <input type="button" id = "plus_button_ring_rotor1" value = "+" class = "button enigma_buttons"/> 
+                            </div>
+                            <div class = "setting">
+                                <input type="button" id = "minus_button_ring_rotor2" value = "-" class = "button enigma_buttons"/>
+                                <div class = "screens coef"><div id = "ring_number_rotor2" class = "center_text"></div> <div id = "ring_letter_rotor2" class = "center_text"></div> </div>
+                                <input type="button" id = "plus_button_ring_rotor2" value = "+" class = "button enigma_buttons"/> 
+                            </div>
+                            <div class = "setting">
+                                <input type="button" id = "minus_button_ring_rotor3" value = "-" class = "button enigma_buttons"/>
+                                <div class = "screens coef"><div id = "ring_number_rotor3" class = "center_text"></div> <div id = "ring_letter_rotor3" class = "center_text"></div> </div>
+                                <input type="button" id = "plus_button_ring_rotor3" value = "+" class = "button enigma_buttons"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class = "frames">
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "clear message" id = "clear" class = "screens">TEXTE CLAIR</textarea>
+                            <input type = "button" value = "" id = "cipher_button" class = "button">
+                        </div>
+                        <div class = "button_and_screen">
+                            <textarea readonly spellcheck="false" name = "encrypted message" id = "encrypted" class = "screens">TEXTE CHIFF RE</textarea>
+                            <input type = "button" value = "" id = "decipher_button" class = "button">
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <div class = "right_bloc">
+                    <h1 id="toggle-right">ENIGMA</h1>
+                    <div id = "text_right">
+                        <p class="text_right">Enigma était un groupe de machines électromécaniques cryptographiques
+                        utilisées par les services secrets de nombreuses nations à partir de 1920 et en particulier l'Allemagne
+                        pendant la seconde guerre mondiale.
+                        La machine implémentée ici est Enigma I.
+                        <br>
+                        <h2>Principe:</h2>
+                        En appuyant sur une lettre du clavier, les rotors tournent et le signal passe par les différents 
+                        composants de la machine: plugboard, rotors, reflector puis repassent dans les rotors
+                        et dans le plugboard pour finalement donner une nouvelle lettre.
+                        <h3>Chiffrement:</h3>
+                        <a href = "image explicative" target="_blank" class="image_link"> Voir image explicative</a>
+                        <h3>Déchiffrement:</h3>
+                        La méthode de chiffrement est involutive donc en chiffrant une nouvelle 
+                        fois le message chiffré avec les mêmes paramètres, on obtient le 
+                        message déchiffré.
+                        <br>
+                        <h2>Sécurité:</h2>
+                        La machine possède 185 962 555 217 826 360 000 combinaisons de réglages possibles.
+                        Il est donc impossible encore aujourd'hui de l'attaquer par force brute.
+                        Toutefois, avec des méthodes avancées de cryptanalyse et grâce à la puissance
+                        des ordinateurs actuels, il est devenu assez aisé de décrypter les messages d'Enigma.
+                        <h2>Un peu d'Histoire:</h2>
+                        En 1918, l'Allemand Arthur Scherbius invente la machine Enigma.
+                        Celle-ci jouera un rôle important pendant la seconde guerre mondiale
+                        puisque les Allemands l'utilisaient pour chiffrer leurs communications 
+                        secrètes et miliraires.
+                        En 1939, les plus grands cerveaux de l'époque (dont Alan Turing) se sont réunis au 
+                        Bletchey Park dans le but de décrypter les messages allemands ce qui 
+                        permettra de changer le cours de la guerre. On estime que leur travail
+                        a raccourci la guerre de deux ans et a sauvé de nombreuses vies.
+                    </p>
+                    </div>
+                </div>
+            </div>
+            
+
+        </main>
+
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2023-10-01">MAJ : Octobre 2023 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>
+        
+    </body>

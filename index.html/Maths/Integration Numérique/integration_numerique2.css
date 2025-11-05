@@ -1,0 +1,284 @@
+:root{
+--panel-bg: rgba(255,255,255,0.96);
+--panel-border: #bdbdbd;
+--accent: #915f51;
+--muted: rgba(0,0,0,0.08);
+--shadow: 0 6px 18px rgba(0,0,0,0.12);
+--radius: 14px;
+--control-padding: 8px;
+--font-base: 15px;
+}
+
+/* WebKit */
+::-webkit-scrollbar { width: 2px; height: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.25); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.35); }
+
+/* Reset léger */
+*{
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    /* font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;  */
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+}
+
+body{
+    overflow: hidden;
+}
+
+main{
+    background-color: white;
+    padding-top: 0 !important;
+}
+
+/* Form controls communs */
+select, input[type="number"], #math-field, input[type="button"] {
+font-size: 0.95rem;
+padding: var(--control-padding);
+border-radius: 10px;
+border: 1px solid var(--muted);
+background: #fff;
+color: #222;
+outline: none;
+transition: box-shadow 0.15s, border-color 0.15s, transform 0.06s;
+}
+
+select:focus, input[type="number"]:focus, #math-field:focus {
+border-color: rgba(145,96,81,0.35);
+box-shadow: 0 4px 10px rgba(145,96,81,0.06);
+}
+
+/* Numeric inputs */
+input[type="number"]{
+margin: 0.25rem 0;
+width: 100%;
+max-width: 140px;
+}
+
+/* Panel container */
+#all-parameters{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: absolute;
+    top: 100px;
+    left: 34px;
+    width: 340px;
+    max-width: calc(100% - 48px);
+    background-color: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 12px;
+    max-height: 78vh;
+    overflow: auto;
+    scroll-behavior: smooth;
+    z-index: 40;
+}
+
+/* Dashboard layout */
+#dashboard{
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+/* Toggle button */
+#toggleButton{
+width: 100%;
+background-color: rgba(250,250,250,0.6);
+color: #525252;
+border: 1px solid rgba(0,0,0,0.04);
+padding: 10px 12px;
+cursor: pointer;
+border-radius: 12px;
+text-align: center;
+transition: background-color 0.22s, color 0.18s, transform 0.06s;
+user-select: none;
+}
+#toggleButton:hover{
+color: var(--accent);
+background-color: #fff8f6;
+transform: translateY(-1px);
+}
+
+/* Error icon container */
+.color-function{
+display: flex;
+align-items: center;
+gap: 8px;
+cursor: default;
+}
+.color-function svg{
+display: block;
+width: 40px;
+height: 40px;
+}
+
+/* Math field + controls row */
+.math-field-button-container{
+display: flex;
+gap: 8px;
+align-items: center;
+width: 100%;
+}
+
+/* f = label */
+#fct-name{
+min-width: 36px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+color: #333;
+font-weight: 600;
+}
+
+/* math-field: flexible, visually input-like */
+#math-field{
+display: flex;
+align-items: center;
+padding: 6px 10px;
+min-height: 40px;
+flex: 1 1 auto;
+border-radius: 10px;
+background: #fafafa;
+border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Bouton test / intégrer */
+input[type="button"]#test, input[type="button"]#integrate_button{
+cursor: pointer;
+background: linear-gradient(180deg,#fff 0%, #faf3f0 100%);
+border: 1px solid rgba(0,0,0,0.06);
+padding: 8px 10px;
+border-radius: 10px;
+color: #333;
+white-space: nowrap;
+}
+input[type="button"]#test:hover, input[type="button"]#integrate_button:hover{
+transform: translateY(-1px);
+box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+/* Latex code hidden but accessible */
+#latex{
+display: none;
+}
+
+/* Method & params column */
+#method_and_parameters_choice{
+    background-color: rgba(250,250,250,0.6);
+    display:flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 100%;
+    align-items: stretch;
+    padding: 2px;
+    border: 1px solid rgba(216, 216, 216, 0.377);
+    border-radius: 12px;
+}
+
+/* Integral range row */
+.integral-range{
+display: flex;
+gap: 8px;
+justify-content: space-between;
+/* flex-wrap: wrap; */
+}
+
+/* Delta and integral lines */
+#delta, #integral{
+display: inline-block;
+color: #444;
+font-weight: 530;
+}
+#delta-result, #integral-result{
+    color: var(--accent);
+    font-weight: 550;
+}
+
+/* Checkbox spacing */
+#check_draw{
+margin-top: 4px;
+transform: translateY(2px);
+}
+
+/* Math table (symbols) */
+#math_table{
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 8px;
+padding: 10px;
+border-radius: 8px;
+background: rgba(250,250,250,0.6);
+align-items: center;
+padding: 2px;
+border: 1px solid rgba(216, 216, 216, 0.377);
+border-radius: 12px;
+}
+
+/* Individual symbol buttons */
+#math_table > span{
+padding: 8px;
+display:flex;
+align-items:center;
+justify-content:center;
+border: 1px solid rgba(0,0,0,0.06);
+background: #fff;
+cursor: pointer;
+border-radius: 8px;
+text-align: center;
+min-height: 36px;
+user-select: none;
+font-size: 0.95rem;
+}
+#math_table > span:hover{
+background-color: #f3f3f3;
+transform: translateY(-2px);
+box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+}
+
+/* Small helper elements */
+#exec_script{
+cursor: pointer;
+height: 100%;
+width: 4%;
+}
+
+/* Hide error pop-up text by default but keep in DOM for accessibility */
+#error-pop-up{
+display: none;
+}
+
+#integrate_button{
+    width: 90%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 420px){
+#all-parameters{
+left: 12px;
+top: 70px;
+width: calc(100% - 24px);
+padding: 10px;
+}
+#math_table{
+grid-template-columns: repeat(3, 1fr);
+}
+.math-field-button-container{
+flex-direction: column;
+align-items: stretch;
+}
+#fct-name{
+width: auto;
+}
+}
+
+/* Accessibility: focus outlines */
+:focus{
+outline: 3px solid rgba(145,96,81,0.12);
+outline-offset: 2px;
+}

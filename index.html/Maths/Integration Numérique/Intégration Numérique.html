@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intégration Numérique</title>
+    <!-- <link rel = "stylesheet" type="text/css" href = "Intégration Numérique.css"> -->
+    <link rel = "stylesheet" type="text/css" href = "integration_numerique2.css">
+    <link rel = "stylesheet" type="text/css" href = "../../../style/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js" type="text/javascript"></script>  
+    <!-- MathJs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.0/math.min.js"></script> 
+    <!-- math function -->
+    <!-- <script src="js/intégration Numérique.js" defer></script> -->
+    <script src="js/Layers.js" defer></script>
+    <script src="js/Grid.js" defer></script>
+    <script src="js/Curve.js" defer></script>
+    <script src="js/Integral.js" defer></script>
+    <script src="js/MathFunction.js" defer></script>
+    <script src="js/main.js" defer></script>
+    
+  </head>
+  <body>
+    <!--Bandeau en haut de la page--> 
+    <header class = "site_header">
+        <div class = "inside_header">
+            <div class = "position_logo"><a href = "../index.html">
+                <img src = "../../../Images test/image test.png" 
+                    width = "75"
+                    height = "54"
+                    alt = "Logo Site"/>
+            </a></div>
+
+            <!-- Navigation -->
+            <nav>
+                <div class = "conteneur-nav">
+                    <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                            width = "30"
+                            height = "30"
+                            alt = "Afficher/Cacher le menu" > </label>
+                    <input type = "checkbox" id = "mobile" role = "button">
+                    <ul>
+                        <li class = "deroulant"><a href = "Index sous dossier.html"> Cryptographie </a>
+                            <ul class = "sous_menu">
+                                <li><a href="../../Cryptographie/Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                <li><a href="../../Cryptographie/Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                <li><a href="../../Cryptographie/Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                <li><a href="../../Cryptographie/Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                <li><a href="../../Cryptographie/Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                <li><a href="../../Cryptographie/Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                            <ul class = "sous_menu">
+                                <li><a href="../Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                <li><a href="#">Représentation de GL2</a></li>
+                                <li><a href="#">Théorie des nombres</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "#"> Jeux </a>
+                            <ul class = "sous_menu">
+                                <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "#"> Divers </a>
+                            <ul class = "sous_menu">
+                                <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- Boutons à droite -->
+                    <ul class = "boutons_droite">
+                        <li><a href = "#"> A propos </a></li>
+                        <li><a href = "#"> Contact </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+      
+    <div id = "all-parameters" > 
+      <div id="toggleButton"> Cacher le Menu </div>     
+      <div id = "dashboard">
+        
+        <div id = "method_and_parameters_choice">
+          
+          <div class = "math-field-button-container">
+            
+            <!-- triangle pour erreur -->
+            <div class = "color-function">
+              <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                <title id = "error-message"></title>
+                <!-- Cercle centré dans le SVG -->
+                <circle cx="20" cy="21" r="10" fill="red" />
+                
+                <!-- Texte centré dans le cercle -->
+                <text id = "error-pop-up" x="20" y="23" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="white">!</text>
+              </svg>
+            </div>
+            <span id = "fct-name">f = </span>
+            <!-- math field -->
+            <span id="math-field"></span>
+            <!-- <input id = "exec_script" type="button" value = "Go"> -->
+            <!-- <input id = "test" type="button" value = "test"> -->
+          </div>
+      
+          <code id="latex"></code>
+
+          <select id = "method_choice">
+            <option value = "0"> Méthode des rectangles à gauche</option>
+            <option value = "1"> Méthode des rectangles au centre</option>
+            <option value = "2"> Méthode des rectangles à droite</option>
+            <!-- <option value = "3"> Méthode des trapèzes </option> -->
+          </select>
+  
+          <!-- Réel entre 0 et 1 qui marque le side d'intégration pour la méthode des rectangles:
+          0 = gauche, 1/2 = milieu, 1 = droite -->
+          <input type="number" id="rectangle_side" value="0" style="display: none;">
+  
+          
+          <div class = "integral-range">
+            <!-- Intervalle d'intégration -->
+            <input type="number" id="left_endpoint" placeholder="a" value="">
+            <input type="number" id="right_endpoint" placeholder="b" value="">
+            <!-- Entier positif qui donne le nombre de rectangles / trapèzes / etc -->
+            <input type="number" id="integration_gap" placeholder="N" value="">
+          </div>
+          
+          <div>
+            <span id = "delta">\Delta x = (b - a) / N</span>
+            <span id = "delta-result"></span>
+          </div>
+
+          <div>
+            <span id = "integral">\int_a^b f(x) \Delta x </span>
+            <span id = "integral-result"></span>
+          </div>
+  
+          <div>
+            <!-- bouton pour intégrer -->
+            <input type="button" id="integrate_button" value="Intégrer" checked />
+            <!-- checkbox qui vérifie si on dessine ou pas -->
+            <input type="checkbox" id="check_draw" value="Draw" checked />
+          </div>
+          
+        </div>
+
+      </div>
+
+      <div id = "math_table">
+          <span id = 'square'> □^2 </span> <!-- \[ □^2 \] -->
+          <span id = 'sqrt'> \sqrt □ </span>
+          <span id = 'abs'> | □ | </span>
+          <span id = 'frac'> \frac{□}{□} </span>
+          <span id = 'ln'> \ln </span>
+    
+          <!-- saut de ligne -->
+          <span id = 'exp'> e^□ </span>
+          <span id = 'pow'> □^□ </span>
+          <span id = 'pi'> \pi </span>
+          <span id = 'e'> e </span>
+    
+          <!-- saut de ligne -->
+          <span id = 'sin'> \sin </span>
+          <span id = 'cos'> \cos </span>
+          <span id = 'tan'> \tan </span>
+          <span id = 'cotan'> \cotan </span>
+          <span id = 'sec'> \sec </span>
+          <span id = 'cosec'> \cosec </span>
+    
+          <!-- saut de ligne -->
+          <span id = 'arcsin'> \arcsin </span>
+          <span id = 'arccos'> \arccos </span>
+          <span id = 'arctan'> \arctan </span>
+          <span id = 'arccotan'> \arccotan </span>
+          <span id = 'arcsec'> \arcsec </span>
+          <span id = 'arccosec'> \arccosec </span>
+
+          <!-- saut de ligne -->
+          <span id = 'sinh'> \sinh </span>
+          <span id = 'cosh'> \cosh </span>
+          <span id = 'tanh'> \tanh </span>
+          <span id = 'cotanh'> \cotanh </span>
+          <span id = 'sech'> \sech </span>
+          <span id = 'cosech'> \cosech </span>
+
+          <!-- saut de ligne -->
+          <span id = 'arcsinh'> \arcsinh </span>
+          <span id = 'arccosh'> \arccosh </span>
+          <span id = 'arctanh'> \arctanh </span>
+          <span id = 'arccotanh'> \arccotanh </span>
+          <span id = 'arcsech'> \arcsech </span>
+          <span id = 'arccosech'> \arccosech </span>
+          
+          <!-- saut de ligne -->
+          <span id = 'gamma'> \Gamma </span>
+          <span id = 'zeta'> \zeta </span>
+          
+        </div>
+      
+    </div>
+    
+
+    <canvas id = "canvas" 
+            width = "1200" 
+            height = "1200"> 
+    </canvas>
+    
+    <script>
+      //const staticMathSpan = document.getElementById('square');
+      const mathFieldSpan = document.getElementById('math-field');
+      const latexSpan = document.getElementById('latex');
+
+      const MQ = MathQuill.getInterface(2); // keeps the API stable
+
+      // easily create static or editable math from a DOM element by calling the
+      // appropriate constructor: http://docs.mathquill.com/en/latest/Api_Methods/
+
+      
+      //MQ.StaticMath(document.getElementById('sqrt'));
+      document.querySelectorAll("#math_table > span").forEach((elem) => {
+        MQ.StaticMath(elem);
+      });
+      MQ.StaticMath(document.getElementById("delta"));
+      MQ.StaticMath(document.getElementById("integral"));
+      MQ.StaticMath(document.getElementById("fct-name"));
+      // you may pass in an options object:
+      const mathField = MQ.MathField(mathFieldSpan, {
+        spaceBehavesLikeTab: true, // an example config option, for more see:
+        //   http://docs.mathquill.com/en/latest/Config/
+        handlers: {
+          edit: function () {
+            // retrieve, in LaTeX format, the math that was typed:
+            latexSpan.textContent = mathField.latex();
+          },
+        },
+      });
+
+    </script>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <time datetime="2025-01-01">MAJ : Janvier 2025 </time>
+      <span class="name"> © Pierre F.</span>
+    </footer>
+
+  </body>
+</html>

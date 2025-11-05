@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Simulateur naif du cryptosystème El Gamal." />
+        <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+        <link rel="stylesheet" type="text/css" href="../style_crypto_2.css"/>
+        <link rel="stylesheet" type="text/css" href="style_el_gamal_cipher.css"/>
+        <title> Chiffre El Gamal </title>
+        <script src = "../style_crypto.js" defer></script>
+        <script src="chiffrement el gamal.js" defer></script>
+
+    </head>
+    <body>
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "../index.html">
+                    <img src = "../../../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "Logo Site"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "../index_crypto.html"> Cryptographie </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                    <li><a href="../Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                    <li><a href="../Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                    <li><a href="../Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                    <li><a href="../Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                    <li><a href="../Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                    <li><a href="#">Représentation de GL2</a></li>
+                                    <li><a href="../../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Jeux </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> A propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class = "main_blocs">
+                <div class = "right_bloc">
+                    <h1 id="toggle-right">CHIFFRE EL GAMAL</h1>
+                    <!-- <input type="button" class = "button" value="+ d'infos ▼"> -->
+                    <div id = "text_right">
+                        <p class="text_right">Le chiffrement El Gamal est une méthode cryptographique asymétrique
+                        c'est-à-dire que l'on a besoin d'une clé publique pour chiffrer des messages
+                        et d'une clé privée pour les déchiffrer.
+                        <br>
+                        <h2>Principe:</h2>
+                        Soit P un nombre premier, G un générateur de (Z/PZ)*.
+                        On note que tous les caluls se feront dans Z/PZ (modulo P).
+                        On choisit un x aléatoirement entre 1 et P-1 et on calcule H = G^x.
+                        La clé publique est alors (P, G, H) et x est la clé privée.
+                        Tout repose sur le fait qu'il est très difficile de retrouver x 
+                        à partir de H et G (c'est le problème du logarithme discret).
+                        <h3>Chiffrement:</h3>
+                        Après conversion du message en code par exemple ascii en un nombre m plus petit
+                        que la clé P (quitte à découper le message), 
+                        on choisit y entre 1 et P-1 et on calcule s = H^y le "secret partagé".
+                        Ensuite, on calcule c1 = G^y nécessaire au déchiffrement et c2 = ms le message chiffré.
+                        <br>
+                        <h3>Déchiffrement:</h3>
+                        On commence par retrouver s = c1^x (en effet: c1 = G^y et G^x = H donc c1^x = G^xy = H^y = s).
+                        Ensuite on calcule m = c2s^-1 avec s^-1 l'inverse de s dans Z/PZ.
+                        Puis on reconvertit le nombre m en caractères.
+                        <br>
+                        <h2>Sécurité:</h2>
+                        Pour que le chiffre soit sûr, il y a plusieurs conditions sur la clé 
+                        et sur l'algorithme lui-même à respecter. Par exemple, actuellement, il est conseillé de choisir
+                        des clés d'au moins 2048 bits (P de 616 chiffres).
+                        Attention: l'algorithme implémenté ici possède des failles (sensible aux attaques par chronométrage entre autre)
+                        et ne devrait pas être utilisé comme moyen de chiffrer des informations délicates.
+                        <h2>Un peu d'Histoire:</h2>
+                        Cette méthode a été inventée en 1984 par Taher Elgamal et a été utilisée
+                        par des logiciels libres comme GnuPG puisqu'elle était libre de droits contrairement
+                        au protocole RSA qui a été sous brevet jusqu'en 2000.
+                    </p>
+                    </div>
+                </div>
+                <div class = "left_bloc">
+                    <div class = "crypto_settings">
+                        <div class = "coefficients">
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">P publique</p></div>
+                                <input type = "text" name = "coef_p" id = "coef_p" value = "167" class = "screens coef"/>
+                            </div>
+                            <div class = "setting">
+                                    <div class="plate"> <p class="text_inside_plate">G publique</p></div>
+                                    <input type = "text" name = "coef_g" id = "coef_g" value = "5" class = "screens coef"/>    
+                            </div>
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">H publique</p></div>
+                                <input type = "text" name = "coef_h" id = "coef_h" value = "60" class = "screens coef"/>    
+                        </div>
+                            
+                        </div>
+                        
+                        
+                        <div class = "coefficients">
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Y secret</p></div>
+                                <input type = "text" name = "coef_y" id = "coef_y" value = "11" class = "screens coef"/>    
+                            </div>
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">X privé</p></div>
+                                <input type = "text" name = "coef_x" id = "coef_x" value = "9" class = "screens coef"/>
+                            </div>
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">C1</p></div>
+                                <input type = "text" name = "coef_c1" id = "coef_c1" value = "" class = "screens coef"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class = "frames">
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "clear message" id = "clear" class = "screens">TEXTE CLAIR</textarea>
+                            <input type = "button" value = "Chiffrer" id = "cipher_button" class = "button">
+                        </div>
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "encrypted message" id = "encrypted" class = "screens">TEXTE CHIFFRE</textarea>
+                            <input type = "button" value = "Déchiffrer" id = "decipher_button" class = "button">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </main>
+
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2023-10-01">MAJ : Octobre 2023 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>
+        
+    </body>

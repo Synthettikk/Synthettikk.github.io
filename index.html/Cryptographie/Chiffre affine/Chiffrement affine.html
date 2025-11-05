@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Simulation chiffrelent affine." />
+        <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+        <link rel="stylesheet" type="text/css" href="../style_crypto_2.css"/>
+        <link rel="stylesheet" type="text/css" href="style_affine_cipher.css"/>
+        <title> Chiffre affine </title>
+        <script src = "../style_crypto.js" defer></script>
+        <script src="chiffrement affine.js" defer></script>
+
+    </head>
+    <body>
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "../index.html">
+                    <img src = "../../../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "Logo Site"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "../index_crypto.html"> Cryptographie </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                    <li><a href="../Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                    <li><a href="../Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                    <li><a href="../Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                    <li><a href="../Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                    <li><a href="../Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Mathématiques </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                    <li><a href="#">Représentation de GL2</a></li>
+                                    <li><a href="../../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Jeux </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
+                                    <li><a href="#">Cours JavaScript</a></li>
+                                    <li><a href="#">Cours PHP et MySQL</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> A propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <main>
+            
+            
+            <div class = "main_blocs">
+                <div class = "left_bloc">
+                    <div class = "crypto_settings">
+                        <div class = "coefficients">
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Alphabet</p></div>
+                                <input type = "text" name = "alphabet" id = "alphabet" value = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" class = "screens"/>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class = "coefficients">
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Coef. A</p></div>
+                                <input type = "number" name = "leading coefficient" id = "lead_coef" value = "1" class = "coef screens"/>    
+                            </div>
+                            <div class = "setting">
+                                <div class="plate"> <p class="text_inside_plate">Coef. B</p></div>
+                                <input type = "number" name = "gap from the origin" id = "gap_origin" value = "0" class = "coef screens "/>    
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class = "frames">
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "clear message" id = "clear" class = "screens">TEXTE CLAIR (MAJUSCULES)</textarea>
+                            <input type = "button" value = "Chiffrer" id = "cipher_button" class = "button">
+                        </div>
+                        <div class = "button_and_screen">
+                            <textarea spellcheck="false" name = "encrypted message" id = "encrypted" class = "screens">TEXTE CHIFFRE (MAJUSCULES)</textarea>
+                            <input type = "button" value = "Déchiffrer" id = "decipher_button" class = "button">
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <div class = "right_bloc">
+                    <h1 id="toggle-right">CHIFFRE AFFINE</h1>
+                    <div id="text_right">
+                        <p class="text_right">Le chiffrement affine consiste en une substitution mono-alphabétique, 
+                        c'est-à-dire qu'une lettre de l'alphabet est transformée en une unique autre lettre.
+                        <br>
+                        <h2>Principe:</h2>
+                        Posons L la taille de l'alphabet, (A, B) la clé de chiffrement et de déchiffrement avec A et B entiers.
+                        <h3>Chiffrement:</h3>
+                        Prenons une lettre du texte clair. 
+                        Soit x la valeur de sa position dans l'alphabet 
+                        ('A' = 0, 'B' = 1, ..., 'Z' = 25) et x' la valeur de 
+                        la position de la lettre chiffrée. On calcule x' tel que x' = Ax + B mod(L).
+                        <br>
+                        <h3>Déchiffrement:</h3>
+                        Soit x' la position dans l'alphabet d'une lettre chiffrée. 
+                        On veut retrouver x, la position de la lettre de départ, non chiffrée. 
+                        On calcule alors x = (x' - B)A^-1 mod(L). 
+                        Avec A^-1 l'inverse de A modulo L.
+                        On note que cet inverse n'existe que si A et L sont premiers entre eux.
+                        <br>
+                        Exemple avec A et L non premiers entre eux:
+                        <br>
+                        Prenons A = 13, B = 0 et l'alphabet latin (L = 26).
+                        <br>
+                        En chiffrant 'TEST' on obtient 'NAAN'. On remarque que 'E' et 'S' sont tous deux chiffrés en 'A'.
+                        On perd donc de l'information.
+                        Lors du déchiffrement, il est alors impossible de retrouver qu'un 'A' était 'E' 
+                        et l'autre 'S'.
+                        <h2>Sécurité:</h2>
+                        De nos jours, cette méthode de chiffrement est très facile à décrypter.
+                        En effet, le nombre de clés viables possible est 12 * 26 = 312 (12 valeurs différentes de A premier avec 26, 26 valeurs de B possibles).
+                        Ainsi, un ordinateur peut casser le code instantanément en essayant toutes les possibilités.
+                        <h2>Un peu d'Histoire:</h2>
+                        On ne connaît pas l'origine de cette méthode de chiffrement. Cependant, 
+                        Jules César utilisait un chiffre affine de clé (A=1, B=3) 
+                        pour ses communications secrètes, en particulier militaires.
+                        On appelle désormais chiffre de César (ou rotn) les chiffrements par décalage de clé (1, n).
+                    </p>
+                    </div>
+                </div>
+            </div>
+            
+
+        </main>
+        
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2023-10-01">MAJ : Octobre 2023 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>
+
+    </body>

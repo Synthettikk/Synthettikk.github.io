@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Une description de la page..." />
+        <meta name = "viewport"
+            content = "width = device-width, initial-scale = 1.0" />
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <title> Page d'accueil </title>
+
+    </head>
+    
+    <body>
+
+        <!--Bandeau en haut de la page--> 
+        <header class = "site_header">
+            <div class = "inside_header">
+                <div class = "position_logo"><a href = "index.html">
+                    <img src = "../Images test/image test.png" 
+                        width = "75"
+                        height = "54"
+                        alt = "descriptif de l'image si elle s'affiche mal"/>
+                </a></div>
+    
+                <!-- Navigation -->
+                <nav>
+                    <div class = "conteneur-nav">
+                        <label for = "mobile"> <img src = "../Images test/menu_responsive.png"
+                                width = "30"
+                                height = "30"
+                                alt = "Afficher/Cacher le menu" > </label>
+                        <input type = "checkbox" id = "mobile" role = "button">
+                        <ul>
+                            <li class = "deroulant"><a href = "Sous dossier test\Index sous dossier.html"> Index sous dossier </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="Sous dossier test\Sous page test.html">Sous page</a></li>
+                                    <li><a href="#">Cours JavaScript</a></li>
+                                    <li><a href="#">Cours PHP et MySQL</a></li>
+                                    <li><a href="#">Cours HTML et CSS</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Poker </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="#">Cours HTML et CSS</a></li>
+                                    <li><a href="#">Cours JavaScript</a></li>
+                                    <li><a href="#">Cours PHP et MySQL</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Games </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="#">Cours HTML et CSS</a></li>
+                                    <li><a href="#">Cours JavaScript</a></li>
+                                    <li><a href="#">Cours PHP et MySQL</a></li>
+                                </ul>
+                            </li>
+                            <li class = "deroulant"><a href = "#"> Divers </a>
+                                <ul class = "sous_menu">
+                                    <li><a href="Divers\fission tipe\fission.html">Fission TIPE</a></li>
+                                    <li><a href="#">Cours JavaScript</a></li>
+                                    <li><a href="#">Cours PHP et MySQL</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Boutons à droite -->
+                        <ul class = "boutons_droite">
+                            <li><a href = "#"> A propos </a></li>
+                            <li><a href = "#"> Contact </a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <!-- Contenu principal de la page -->
+        <main>
+            <!-- Titre de la page -->
+            <h1>
+                Page d'acceuil
+            </h1>
+            
+            
+            <p>
+                On va noter sur cette page certains points intéressants pour apprendre l'html et le css.
+            </p>
+
+            <!-- On peut segmenter le contenu de la page en sections -->
+            <div class = "section">
+                <section>
+                    <h2 class = "titre_section">
+                        M'envoyer un mail
+                    </h2>
+                    <p>
+                        <a href = "mailto:fromonotp@gmail.com">MAIL</a>
+                        Pas d'article dans cette section
+                    </p>
+                </section>
+    
+                <section>
+                    <h2 class = "titre_section">
+                        Zone pour écrire du texte:
+                        <textarea name = "teeest"></textarea>
+                    </h2>
+                    <p>
+                        On écrit plusieurs "petites" classes plutôt qu'une grosse. <br>
+                        On utilise div pour contenir et span comme contenu.
+                    </p>
+                        <!-- On peut segmenter les sections par des articles -->
+                        <article>
+                            <h3>
+                                Article 1
+                            </h3>
+                            <p class ="gauche">
+                                Un super test de texte un peu long mais pas trop, mais un peu quand même pour avoir une bonne idée du résultat escompté.
+                            </p>
+                        </article>
+                        <article>
+                            <h3>
+                                Article 2
+                            </h3>
+                            <p class = "centre">
+                                Un super test de texte un peu long mais pas trop, mais un peu quand même pour avoir une bonne idée du résultat escompté.
+                            </p>
+                        </article>
+                </section>
+                <section>
+                    <h2 class = "titre_section">
+                        Section 3
+                    </h2>
+                    <p>
+                        Texte 3e section
+                    </p>
+                </section>
+            </div>
+            
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            
+            <!-- Sépare un morceau de la page du main -->
+            <aside>
+                <p>
+                    Texte de la side barre.
+                </p>
+            </aside>
+
+            
+
+        </main>
+        <hr>
+        
+        <!-- Bandeau en bas de la page -->
+        <footer>
+            <p>
+                Le footer en bas de la page de mon gros site.
+            </p>
+        </footer>
+    
+    </body>
+    
+</html>
+
+
