@@ -5,6 +5,13 @@
     padding: 0px;
 }
 
+a:focus,
+a:active {
+  outline: none;        /* retire le contour natif */
+  box-shadow: none;     /* retire ombres éventuelles (Chrome) */
+}
+
+
 html{
     width:auto;
     min-width: 100%;
@@ -130,9 +137,17 @@ nav > div > ul > li > a{
     position: relative;
     margin: 0px;
     padding: 0px;
-    clip-path: circle(35%);
     vertical-align: middle;
 } 
+
+.position_logo img{
+    width: 75px;
+    height: 54px;
+    margin-top: 3px;
+  object-fit: cover; /* garde le ratio sans déformation, remplit le conteneur */
+  display: block;
+  clip-path: circle(40%);
+}
 
 
 

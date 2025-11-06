@@ -4,158 +4,129 @@
 
     <head>
         <meta charset = "utf-8"/>
-        <meta name = "description" content = "Une description de la page..." />
+        <meta name = "description" content = "Page d'accueil" />
         <meta name = "viewport"
             content = "width = device-width, initial-scale = 1.0" />
-        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel = "stylesheet" type="text/css" href = "../style/nav.css">
+        <link rel="stylesheet" type="text/css" href="../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="style_menu.css"/>
         <title> Page d'accueil </title>
-
     </head>
     
     <body>
 
         <!--Bandeau en haut de la page--> 
-        <header class = "site_header">
-            <div class = "inside_header">
-                <div class = "position_logo"><a href = "index.html">
-                    <img src = "../Images test/image test.png" 
-                        width = "75"
-                        height = "54"
-                        alt = "descriptif de l'image si elle s'affiche mal"/>
-                </a></div>
-    
-                <!-- Navigation -->
-                <nav>
-                    <div class = "conteneur-nav">
-                        <label for = "mobile"> <img src = "../Images test/menu_responsive.png"
-                                width = "30"
-                                height = "30"
-                                alt = "Afficher/Cacher le menu" > </label>
-                        <input type = "checkbox" id = "mobile" role = "button">
-                        <ul>
-                            <li class = "deroulant"><a href = "Sous dossier test\Index sous dossier.html"> Index sous dossier </a>
-                                <ul class = "sous_menu">
-                                    <li><a href="Sous dossier test\Sous page test.html">Sous page</a></li>
-                                    <li><a href="#">Cours JavaScript</a></li>
-                                    <li><a href="#">Cours PHP et MySQL</a></li>
-                                    <li><a href="#">Cours HTML et CSS</a></li>
-                                </ul>
-                            </li>
-                            <li class = "deroulant"><a href = "#"> Poker </a>
-                                <ul class = "sous_menu">
-                                    <li><a href="#">Cours HTML et CSS</a></li>
-                                    <li><a href="#">Cours JavaScript</a></li>
-                                    <li><a href="#">Cours PHP et MySQL</a></li>
-                                </ul>
-                            </li>
-                            <li class = "deroulant"><a href = "#"> Games </a>
-                                <ul class = "sous_menu">
-                                    <li><a href="#">Cours HTML et CSS</a></li>
-                                    <li><a href="#">Cours JavaScript</a></li>
-                                    <li><a href="#">Cours PHP et MySQL</a></li>
-                                </ul>
-                            </li>
-                            <li class = "deroulant"><a href = "#"> Divers </a>
-                                <ul class = "sous_menu">
-                                    <li><a href="Divers\fission tipe\fission.html">Fission TIPE</a></li>
-                                    <li><a href="#">Cours JavaScript</a></li>
-                                    <li><a href="#">Cours PHP et MySQL</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <!-- Boutons à droite -->
-                        <ul class = "boutons_droite">
-                            <li><a href = "#"> A propos </a></li>
-                            <li><a href = "#"> Contact </a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
+    <header class = "site_header">
+        <div class = "inside_header">
+            <div class = "position_logo"><a href = "../index.html">
+                <img src = "../Images test/logo-site.jpg" 
+                    alt = "Logo"/>
+            </a></div>
+
+            <!-- Navigation -->
+            <nav>
+                <div class = "conteneur-nav">
+                    <label for = "mobile"> <img src = "../Images test/menu_responsive.png"
+                            width = "30"
+                            height = "30"
+                            alt = "Afficher/Cacher le menu" > </label>
+                    <input type = "checkbox" id = "mobile" role = "button">
+                    <ul>
+                        <li class = "deroulant"><a href = "Cryptographie/index_crypto.html"> Cryptographie </a>
+                            <ul class = "sous_menu">
+                                <li><a href="Cryptographie/Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
+                                <li><a href="Cryptographie/Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
+                                <li><a href="Cryptographie/Chiffre Enigma/Enigma.html">Enigma</a></li>
+                                <li><a href="Cryptographie/Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
+                                <li><a href="Cryptographie/Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
+                                <li><a href="Cryptographie/Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "Maths/index_maths.html"> Mathématiques </a>
+                            <ul class = "sous_menu">
+                                <li><a href="Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
+                                <li><a href="#">Représentation de Matrices (GL2)</a></li>
+                                <li><a href="Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "#"> Jeux </a>
+                            <ul class = "sous_menu">
+                                <li><a href="Jeux/Snake/Snake.html">Snake</a></li>
+                            </ul>
+                        </li>
+                        <li class = "deroulant"><a href = "#"> Divers </a>
+                            <ul class = "sous_menu">
+                                <li><a href="Divers/fission tipe/fission.html">Fission TIPE</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- Boutons à droite -->
+                    <ul class = "boutons_droite">
+                        <li><a href = "APropos/Propos.html"> À propos </a></li>
+                        <li><a href = "Contact/Contact.html"> Contact </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
         
         
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <!-- Contenu principal de la page -->
-        <main>
-            <!-- Titre de la page -->
-            <h1>
-                Page d'acceuil
-            </h1>
-            
-            
-            <p>
-                On va noter sur cette page certains points intéressants pour apprendre l'html et le css.
-            </p>
-
-            <!-- On peut segmenter le contenu de la page en sections -->
-            <div class = "section">
-                <section>
-                    <h2 class = "titre_section">
-                        M'envoyer un mail
-                    </h2>
-                    <p>
-                        <a href = "mailto:fromonotp@gmail.com">MAIL</a>
-                        Pas d'article dans cette section
-                    </p>
-                </section>
-    
-                <section>
-                    <h2 class = "titre_section">
-                        Zone pour écrire du texte:
-                        <textarea name = "teeest"></textarea>
-                    </h2>
-                    <p>
-                        On écrit plusieurs "petites" classes plutôt qu'une grosse. <br>
-                        On utilise div pour contenir et span comme contenu.
-                    </p>
-                        <!-- On peut segmenter les sections par des articles -->
-                        <article>
-                            <h3>
-                                Article 1
-                            </h3>
-                            <p class ="gauche">
-                                Un super test de texte un peu long mais pas trop, mais un peu quand même pour avoir une bonne idée du résultat escompté.
-                            </p>
-                        </article>
-                        <article>
-                            <h3>
-                                Article 2
-                            </h3>
-                            <p class = "centre">
-                                Un super test de texte un peu long mais pas trop, mais un peu quand même pour avoir une bonne idée du résultat escompté.
-                            </p>
-                        </article>
-                </section>
-                <section>
-                    <h2 class = "titre_section">
-                        Section 3
-                    </h2>
-                    <p>
-                        Texte 3e section
-                    </p>
-                </section>
+   <main>
+        <div class="crypto-menu" aria-label="Menu crypto">
+            <div class="menu-banner">
+                <h2>Accueil</h2>
+                Sur ce site sont présentées mes réalisations de codes comportant un intérêt visuel
+                ou pédagogique. Le but est de permettre aux utilisateurs de découvrir de nouveaux point de vue 
+                sur des concepts abstraits via des interfaces graphiques.
+                <br>
+                Tout est réalisé en HTML/CSS et JavaScript.
             </div>
-            
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            
-            <!-- Sépare un morceau de la page du main -->
-            <aside>
-                <p>
-                    Texte de la side barre.
-                </p>
-            </aside>
 
-            
+            <ul class="menu-grid">
+                <li><a class="menu-card" href="Cryptographie/index_crypto.html">
+                <div class="card-title">Cryptographie</div>
+                <div class="card-desc">Présente quelques cryptosystèmes classiques, utilisables.</div>
+                <div class="card-badge">6 pages</div>
+                </a></li>
 
-        </main>
-        <hr>
+                <li><a class="menu-card" href="Maths/index_maths.html">
+                <div class="card-title">Mathématiques</div>
+                <div class="card-desc">Programmes mettant des mathématiques en images : intégration, matrices, ...</div>
+                <div class="card-badge">3 pages</div>
+                </a></li>
+
+                <li><a class="menu-card" href="Jeux/Snake/Snake.html">
+                <div class="card-title">Jeux</div>
+                <div class="card-desc">Snake, Pac-Man en projet</div>
+                <div class="card-badge">1 page</div>
+                </a></li>
+
+                <li><a class="menu-card" href="Divers/fission tipe/fission.html">
+                <div class="card-title">Divers</div>
+                <div class="card-desc">Un seul projet (pour l'instant) : simulation de fission nucléaire.</div>
+                <div class="card-badge">1 page</div>
+                </a></li>
+
+                <li><a class="menu-card" href="APropos/Propos.html">
+                <div class="card-title">À propos</div>
+                <div class="card-desc">Curriculum Vitae, etc.</div>
+                <div class="card-badge">1 page</div>
+                </a></li>
+
+                <li><a class="menu-card" href="Contact/Contact.html">
+                <div class="card-title">Contact</div>
+                <div class="card-desc">Informations de contact</div>
+                <div class="card-badge">1 page</div>
+                </a></li>
+            </ul>
+        </div>
+    </main>
         
         <!-- Bandeau en bas de la page -->
-        <footer>
-            <p>
-                Le footer en bas de la page de mon gros site.
-            </p>
-        </footer>
+    <footer class="site-footer" role="contentinfo">
+        <time datetime="2025-11-01">MAJ : Novembre 2025 </time>
+        <span class="name"> © Pierre F.</span>
+    </footer>
     
     </body>
     

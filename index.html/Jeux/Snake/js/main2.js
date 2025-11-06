@@ -200,7 +200,7 @@ class Snake {
         if (this.score() <= localStorage[mapLvLScore.get(niveau)]){
             menugameOver.style.display = "block";
         } else{
-            //localStorage[mapLvLScore.get(niveau)] = this.score();
+            localStorage[mapLvLScore.get(niveau)] = this.score();
             menubestScore.style.display = "block";
         }
     }
