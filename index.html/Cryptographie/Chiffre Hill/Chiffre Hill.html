@@ -11,70 +11,22 @@
         <title> Chiffre de Hill </title>
         <script src = "../style_crypto.js" defer></script>
         <script src="chiffrement hill.js" defer></script>
-
     </head>
+
     <body>
-        <!--Bandeau en haut de la page--> 
+        <!-- NAV --> 
         <header class = "site_header">
-            <div class = "inside_header">
-                <div class = "position_logo"><a href = "../../index.html">
-                    <img src = "../../../Images test/logo-site.jpg" 
-                        width = "75"
-                        height = "54"
-                        alt = "Logo"/>
-                </a></div>
-    
-                <!-- Navigation -->
-                <nav>
-                    <div class = "conteneur-nav">
-                        <label for = "mobile"> <img src = "../../../Images test/menu_responsive.png"
-                                width = "30"
-                                height = "30"
-                                alt = "Afficher/Cacher le menu" > </label>
-                        <input type = "checkbox" id = "mobile" role = "button">
-                        <ul>
-                            <li class = "deroulant"><a href = "../index_crypto.html"> Cryptographie </a>
-                                <ul class = "sous_menu">
-                                    <li><a href="../Chiffre affine/Chiffrement affine.html">Chiffre affine</a></li>
-                                    <li><a href="../Chiffre Vigenere/Chiffre Vigenere.html">Chiffre de Vigenère</a></li>
-                                    <li><a href="../Chiffre Enigma/Enigma.html">Enigma</a></li>
-                                    <li><a href="../Chiffre RSA/Chiffre RSA.html">Chiffre RSA</a></li>
-                                    <li><a href="../Chiffre El Gamal/Chiffre El Gamal.html">Chiffre El Gamal</a></li>
-                                    <li><a href="../Chiffre Hill/Chiffre Hill.html ">Chiffre de Hill</a></li>
-                                </ul>
-                            </li>
-                            <li class = "deroulant"><a href = "../../Maths/index_maths.html"> Mathématiques </a>
-                                <ul class = "sous_menu">
-                                    <li><a href="../../Maths/Integration Numérique/Intégration Numérique.html">Intégration Numérique</a></li>
-                                    <li><a href="#">Représentation de GL2</a></li>
-                                    <li><a href="../../Maths/Theorie des Nombres/TDnombres.html">Théorie des nombres</a></li>
-                                </ul>
-                            </li>
-                            <li class = "deroulant"><a href = "#"> Jeux </a>
-                                <ul class = "sous_menu">
-                                    <li><a href="../../Jeux/Snake/Snake.html">Snake</a></li>
-                                </ul>
-                            </li>
-                            <li class = "deroulant"><a href = "#"> Divers </a>
-                                <ul class = "sous_menu">
-                                    <li><a href="../../Divers/fission tipe/fission.html">Fission TIPE</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <!-- Boutons à droite -->
-                        <ul class = "boutons_droite">
-                            <li><a href = "../../APropos/Propos.html"> À propos </a></li>
-                            <li><a href = "../../Contact/Contact.html"> Contact </a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+            <!-- Contenu appelé par JS -->
         </header>
 
+        <script>
+            fetch('/nav/nav.html')                // lance la requête HTTP GET vers /nav.html — retourne une Promise
+            .then(response => response.text()) // quand la requête réussit, convertit la réponse en texte — retourne une nouvelle Promise
+            .then(html => document.querySelector('header').innerHTML = html) // quand le texte est prêt, l'insère dans la page
+            .catch(err => console.error('Nav load failed', err)); // si une étape échoue, on gère l'erreur ici
+        </script>    
 
         <main>
-            
-            
             <div class = "main_blocs">
                 <div class = "left_bloc">
                     <div class = "crypto_settings settings_row">
@@ -183,7 +135,6 @@
                     </div>
                 </div>
             </div>
-
         </main>
         
         <footer class="site-footer" role="contentinfo">
