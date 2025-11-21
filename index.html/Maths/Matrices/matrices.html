@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrices</title>
+    <script src="js/vec2.js" defer></script>
+    <script src="js/equation.js" defer></script>
+    <script src="js/Layers.js" defer></script>
+    <script src="js/Grid.js" defer></script>
+    <script src="js/Deformed.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+</head>
+
+<body>
+    <!-- NAV --> 
+    <header class = "site_header">
+        <!-- Contenu appelé par JS -->
+    </header>
+
+    <script>
+        fetch('/nav/nav.html')                // lance la requête HTTP GET vers /nav.html — retourne une Promise
+        .then(response => response.text()) // quand la requête réussit, convertit la réponse en texte — retourne une nouvelle Promise
+        .then(html => document.querySelector('header').innerHTML = html) // quand le texte est prêt, l'insère dans la page
+        .catch(err => console.error('Nav load failed', err)); // si une étape échoue, on gère l'erreur ici
+    </script>    
+
+    <main>
+    <div id = "all-parameters">
+        <div id="toggleButton"> Cacher le Menu </div>
+        <div id = "dashboard">
+            <div id = "matrix" class="matrix-inline">
+                <div class="matrix-label">M =</div>
+                <table id = "left_matrix">
+                    <tbody id = "left_matrix_body">
+                        <tr>
+                            <td><input id = "coef_1" type = "number" value = "3" class = "screens matrix_coef"/></td>
+                            <td><input id = "coef_2" type = "number" value = "-1" class = "screens matrix_coef"/></td>
+                        </tr>
+                        <tr>
+                            <td><input id = "coef_3" type = "number" value = "2" class = "screens matrix_coef"/></td>
+                            <td><input id = "coef_4" type = "number" value = "3" class = "screens matrix_coef"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <input type="button" id="anim_button" value="GO !" />
+        </div>
+    </div>
+
+    <canvas id="view" width="800px" height="800px"></canvas>
+    </main>
+    
+</body>
+
+</html>
