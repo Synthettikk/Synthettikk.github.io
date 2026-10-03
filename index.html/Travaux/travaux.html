@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name = "description" content = "Mes mémoires en TDN." />
+        <link rel="stylesheet" type="text/css" href="style_TDN.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/footer.css"/>
+        <link rel="stylesheet" type="text/css" href="../../../style/nav.css"/>
+        <title> Théorie des nombres </title>
+    </head>
+
+    <body>
+        <!-- NAV --> 
+        <header class = "site_header">
+            <!-- Contenu appelé par JS -->
+        </header>
+
+        <script>
+            fetch('/nav/nav.html')                // lance la requête HTTP GET vers /nav.html — retourne une Promise
+            .then(response => response.text()) // quand la requête réussit, convertit la réponse en texte — retourne une nouvelle Promise
+            .then(html => document.querySelector('header').innerHTML = html) // quand le texte est prêt, l'insère dans la page
+            .catch(err => console.error('Nav load failed', err)); // si une étape échoue, on gère l'erreur ici
+        </script>    
+
+        <main>
+
+        <section class="intro">    
+            <p> Mes travaux portent principalement sur les réseaux p-adiques pour la cryptographie post-quantique et leur complexité algorithmique.
+            </p>  
+        </section>
+
+        <section class="memos">
+
+        <article class="memo">
+            <div class="meta">
+                <span class="type">Article</span>
+                <span class="year">Sep, 2026</span>
+                <span class="institution">XLIM</span>
+            </div>
+            <div class="content">
+            <h3 class="title">On the Complexity of Computing with p-adic Lattices</h3>
+            <p class="desc">
+                P. Fromonot, M. Haiech, T. Vaccon.
+                <br>
+                Soumission visée : ISSAC '27 (52nd International Symposium on Symbolic and Algebraic Computation), Tsukuba, Japon, juillet 2027.
+                <br>
+                Complexité algorithmique des réseaux p-adiques : dans le modèle boîte noire, où la norme ultra
+                métrique N n'est accessible que par un oracle d'évaluation, quelle est la difficulté de calculer une base
+                N-orthogonale, ou de décider qu'une base donnée l'est ? 
+                <br>
+                Résultat. Preuve d'une borne inférieure Ω(p^n - 1) requêtes pour les deux problèmes dans le pire cas, et construction d'algorithmes atteignant cette
+                borne à un facteur polynomial près, prouvant l'optimalité. Ce résultat répond formellement à une
+                question ouverte de Zhang, Deng et Wang, et affine les résultats récents de Duan et Wu (arXiv:2608.22084, 2026) en donnant des 
+                bornes ponctuelles qui dépendent de la structure de chaque norme, là où leurs résultats ne portaient que sur des bornes uniformes.
+            </p>
+            <div class="actions">
+                <a class="btn primary" href="complexity-p-adic-lattices.pdf" target="_blank" rel="noopener noreferrer">📄 Ouvrir</a>
+                <a class="btn" href="complexity-p-adic-lattices.pdf" download>⬇️ Télécharger</a>
+            </div>
+            </div>
+        </article>
+
+        <article class="memo">
+            <div class="meta">
+                <span class="type">Mémoire</span>
+                <span class="year">Aug, 2026</span>
+                <span class="institution">XLIM</span>
+            </div>
+            <div class="content">
+            <h3 class="title">Cryptographie basée sur les réseaux p-adiques</h3>
+            <p class="desc">
+                Notre travail établit la première borne formelle de complexité pour les problèmes CVP/orthogonalisation sur les
+                réseaux p-adiques avec oracle de norme, consolidant leurs fondations théoriques pour la conception de futurs
+                cryptosystèmes post-quantiques. Les implémentations en SageMath des algorithmes sont disponibles à
+                l'adresse suivante : <a href="https://github.com/Synthettikk/p-adic-Lattices-for-Cryptography" target="_blank">
+                    https://github.com/Synthettikk/p-adic-Lattices-for-Cryptography</a>  
+            </p>
+            <div class="actions">
+                <a class="btn primary" href="Memoire_p-adic.pdf" target="_blank" rel="noopener noreferrer">📄 Ouvrir</a>
+                <a class="btn" href="Memoire_p-adic.pdf" download>⬇️ Télécharger</a>
+            </div>
+            </div>
+        </article>
+
+        <article class="memo">
+            <div class="meta">
+                <span class="type">Mémoire M2</span>
+                <span class="year">Aug, 2025</span>
+                <span class="institution">UMLP</span>
+            </div>
+            <div class="content">
+            <h3 class="title">Fonctions L p-adiques classiques : fonctions zêta et formes modulaires</h3>
+            <p class="desc">
+                Ce mémoire présente des résultats classiques sur la fonction zêta p-adique de Kubota-Leopoldt,
+                les fonctions L de formes modulaires construites avec les coefficients apparaissant
+                dans le q-développement des formes modulaires, et les fonctions L p-adiques de formes modulaires.
+                Toutes ces fonctions généralisent la fonction zêta de Riemann.
+            </p>
+            <div class="actions">
+                <a class="btn primary" href="Memoire M2 PF.pdf" target="_blank" rel="noopener noreferrer">📄 Ouvrir</a>
+                <a class="btn" href="Memoire M2 PF.pdf" download>⬇️ Télécharger</a>
+            </div>
+            </div>
+        </article>
+
+        <article class="memo">
+            <div class="meta">
+                <span class="type">Mémoire M1</span>
+                <span class="year">Sep, 2024</span>
+                <span class="institution">UMLP</span>
+            </div>
+            <div class="content">
+            <h3 class="title">Fonctions L de Dirichlet et fonctions zêta de Dedekind</h3>
+            <p class="desc">
+                Ce travail a pour but de présenter les fonctions L de Dirichlet 
+                et zêta de Dedekind et de montrer des résultats classiques de théorie 
+                des nombres (comme le théorème de la progression arithmétique et 
+                la formule du nombre de classes) liés aux résidus en 1 de ces 
+                fonctions.
+            </p>
+            <div class="actions">
+                <a class="btn primary" href="Memoire M1 V1 PF.pdf" target="_blank" rel="noopener noreferrer">📄 Ouvrir</a>
+                <a class="btn" href="Memoire M1 V1 PF.pdf" download>⬇️ Télécharger</a>
+            </div>
+            </div>
+        </article>
+
+        </section>
+        </main>
+
+        <footer class="site-footer" role="contentinfo">
+            <time datetime="2025-10-01">MAJ : Octobre 2026 </time>
+            <span class="name"> © Pierre F.</span>
+        </footer>

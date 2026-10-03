@@ -1,6 +1,6 @@
 :root{
   --bg: #FAFAF8;
-  --card: #FFFFFF;
+  --card: #f5f7fb;
   --muted: #6B7280;
   --accent: #0B5FFF;
   --accent-2: #FF6B6B;
@@ -11,7 +11,7 @@
 }
 
 body{
-  background: linear-gradient(180deg,#f3f4f5 0%, #FFFFFF 70%);
+  background: linear-gradient(162deg, #e3e4e6 0%, #68696d 100%) !important;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color:#0F172A;
   margin:0;
@@ -21,11 +21,23 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
+.intro {
+  padding: 24px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgb(2, 15, 39);
+}
+
+.intro p {
+  margin: 0;
+}
+
+
 .memos{
   max-width: 920px;
-  margin: 32px auto;
+  margin: 5px auto;
   padding: 20px;
-  background: linear-gradient(180deg, var(--bg), #fff);
+  background-color: #e8ecff00;
   color: #111827;
 }
 
@@ -41,6 +53,7 @@ body{
   gap: var(--gap);
   align-items: flex-start;
   background: var(--card);
+  border: 0.7px solid #9da4b1;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 14px;
@@ -60,7 +73,7 @@ body{
   flex-direction: column;
   gap: 8px;
   align-items: flex-start;
-  padding-left: 6px;
+  padding-left: 2px;
 }
 
 .meta .year{
@@ -76,6 +89,13 @@ body{
   padding: 4px 8px;
   border-radius: 999px;
 }
+
+.meta .institution {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
 
 .content{
   flex: 1;
